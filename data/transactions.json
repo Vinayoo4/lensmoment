@@ -1,0 +1,17 @@
+[
+  {
+    "id": "c3593b3c-59ed-43f0-9db4-9309629a1299",
+    "workspaceId": "w_01",
+    "amount": -200,
+    "description": "Buy desk",
+    "status": "reconciled"
+  },
+  {
+    "id": "a91b2854-0552-4eb8-8fe2-ea076a8abf25",
+    "workspaceId": "w_01",
+    "date": "2026-05-27",
+    "amount": -300,
+    "description": "Office supplies",
+    "status": "unreconciled"
+  }
+]

@@ -1,0 +1,30 @@
+[
+  {
+    "id": "39ad532c-1025-4578-9e35-7a0d758845d3",
+    "kpiId": "k_traffic",
+    "date": "2026-05-27",
+    "value": 100,
+    "isSynced": true
+  },
+  {
+    "id": "60a40a82-8969-46b1-be08-ccbc42a25ae6",
+    "kpiId": "k_traffic",
+    "date": "2026-05-28",
+    "value": 50,
+    "isSynced": true
+  },
+  {
+    "id": "e0d0e92d-f676-4c71-9b5e-a8ca9e88b243",
+    "kpiId": "k_traffic",
+    "date": "2026-05-27",
+    "value": 150,
+    "isSynced": true
+  },
+  {
+    "id": "b9c949fd-cae2-4520-8f88-8900d1f0e181",
+    "kpiId": "k_traffic",
+    "date": "2026-05-27",
+    "value": 150,
+    "isSynced": true
+  }
+]
