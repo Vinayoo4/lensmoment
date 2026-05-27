@@ -1,0 +1,9 @@
+[
+  {
+    "id": "6e3490fc-6904-4af2-8310-0c41208b2386",
+    "name": "admin",
+    "passwordHash": "9c444884338ff2029eccd19a698034c7:327da46dc3a8c118b6f915aa250679f0c4f003e5577eb0e162474889f57ab41f2c6ad714abd09e3e4771d5ad2c635ae339af954f3fda9848b7c33b56677844a2",
+    "role": "Workspace Admin",
+    "workspaceId": "w_01"
+  }
+]

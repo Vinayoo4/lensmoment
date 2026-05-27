@@ -1,0 +1,18 @@
+[
+  {
+    "id": "fefc61a1-4c2c-4940-8156-b27f2537dc93",
+    "workspaceId": "w_01",
+    "type": "trend_down",
+    "trigger": "traffic_drop",
+    "text": "Alert: KPI dropped from 150 to 50.",
+    "status": "todo"
+  },
+  {
+    "id": "9b8153f4-cfe6-491d-90a9-5fbd38214a6e",
+    "workspaceId": "w_01",
+    "type": "accounting_gap",
+    "trigger": "unreconciled",
+    "text": "Reconciliation warning: You have unassigned transaction gaps totaling $-300.",
+    "status": "todo"
+  }
+]
