@@ -114,12 +114,14 @@ const loadDashboard = async () => {
     return;
   }
   try {
-    const res = await fetch(`${API_BASE_URL}/api/dashboard?workspaceId=${appStore.user.workspaceId}`);
+    const res = await fetch(`${API_BASE_URL}/api/dashboard?workspaceId=${appStore.user.workspaceId}`, {
+      headers: { 'Authorization': `Bearer ${appStore.user?.token}` }
+    });
     if (res.ok) {
       data.value = await res.json();
     }
   } catch (e) {
-    console.warn("Offline or server unavailable");
+    // Suppress noise in production
   }
 };
 
@@ -139,12 +141,15 @@ const addKpi = async () => {
     try {
       await fetch(`${API_BASE_URL}/api/kpi`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${appStore.user?.token}`
+        },
         body: JSON.stringify(payload)
       });
       await loadDashboard();
     } catch (e) {
-      console.error(e);
+      // Offline fallback already handled
     }
   }
   form.value.value = '';
@@ -166,12 +171,15 @@ const addTransaction = async () => {
     try {
       await fetch(`${API_BASE_URL}/api/transactions`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${appStore.user?.token}`
+        },
         body: JSON.stringify(payload)
       });
       await loadDashboard();
     } catch (e) {
-      console.error(e);
+      // Offline fallback already handled
     }
   }
   txForm.value.amount = '';
@@ -192,12 +200,15 @@ const reconcile = async (id: string) => {
     try {
       await fetch(`${API_BASE_URL}/api/transactions/${id}/status`, {
         method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${appStore.user?.token}`
+        },
         body: JSON.stringify({ status: 'reconciled' })
       });
       await loadDashboard();
     } catch (e) {
-      console.error(e);
+      // Offline fallback already handled
     }
   }
 };

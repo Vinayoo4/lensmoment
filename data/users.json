@@ -5,5 +5,12 @@
     "passwordHash": "9c444884338ff2029eccd19a698034c7:327da46dc3a8c118b6f915aa250679f0c4f003e5577eb0e162474889f57ab41f2c6ad714abd09e3e4771d5ad2c635ae339af954f3fda9848b7c33b56677844a2",
     "role": "Workspace Admin",
     "workspaceId": "w_01"
+  },
+  {
+    "id": "aaaf1e64-dc44-432d-ab4f-07a5f4e08244",
+    "name": "testuser_1779949697313",
+    "passwordHash": "557fd7f8d8df55f632d5d6afdf7bcde3:f489e16688a1168dd26e6d3839105a0fe18d564be4b9bdcd1c7832a2eb61239fb8b593041711f08d370a1b58d95dbcbd59bc5bd7ec37f43da7b68301bf8f5551",
+    "role": "Workspace Admin",
+    "workspaceId": "w_01"
   }
 ]

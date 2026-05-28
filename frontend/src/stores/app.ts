@@ -42,36 +42,56 @@ export const useAppStore = defineStore('app', {
       if (queue.length === 0) return;
 
       const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+      if (!this.user?.token) return; // Cannot process without auth
+
+      const remainingQueue = [...queue];
 
       for (const action of queue) {
         try {
+          let res;
           if (action.type === 'CREATE_KPI') {
-            await fetch(`${API_BASE_URL}/api/kpi`, {
+            res = await fetch(`${API_BASE_URL}/api/kpi`, {
               method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
+              headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${this.user?.token}`
+              },
               body: JSON.stringify(action.payload)
             });
           } else if (action.type === 'CREATE_TRANSACTION') {
-            await fetch(`${API_BASE_URL}/api/transactions`, {
+            res = await fetch(`${API_BASE_URL}/api/transactions`, {
               method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
+              headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${this.user?.token}`
+              },
               body: JSON.stringify(action.payload)
             });
           } else if (action.type === 'RECONCILE_TRANSACTION') {
-            await fetch(`${API_BASE_URL}/api/transactions/${action.payload.id}/status`, {
+            res = await fetch(`${API_BASE_URL}/api/transactions/${action.payload.id}/status`, {
               method: 'PUT',
-              headers: { 'Content-Type': 'application/json' },
+              headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${this.user?.token}`
+              },
               body: JSON.stringify({ status: 'reconciled' })
             });
           }
+
+          if (res && res.ok) {
+             // Remove successfully synced action from queue immediately
+             remainingQueue.shift();
+             this.offlineQueue = [...remainingQueue];
+             await localforage.setItem('offlineQueue', JSON.parse(JSON.stringify(this.offlineQueue)));
+          } else {
+             // Request went through but failed (e.g. 500 error), stop processing queue
+             break;
+          }
         } catch (e) {
-          console.error('Failed to sync action', action, e);
-          return; // stop processing if one fails
+          // Network failure, stop processing queue
+          break;
         }
       }
-
-      this.offlineQueue = [];
-      await localforage.setItem('offlineQueue', []);
     },
     async loadQueue() {
       const queue = await localforage.getItem<any[]>('offlineQueue') || [];

@@ -26,5 +26,12 @@
     "date": "2026-05-27",
     "value": 150,
     "isSynced": true
+  },
+  {
+    "id": "75e575e6-c4b7-442a-aba3-612dab7a05c7",
+    "kpiId": "k_traffic",
+    "date": "2026-05-28",
+    "value": 120,
+    "isSynced": true
   }
 ]

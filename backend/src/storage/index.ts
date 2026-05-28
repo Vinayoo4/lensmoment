@@ -12,6 +12,21 @@ async function ensureFile(filePath: string, defaultContent: any) {
   }
 }
 
+// Simple mutex to avoid file corruption under concurrent writes
+const locks: Record<string, Promise<void>> = {};
+
+async function acquireLock(filename: string): Promise<() => void> {
+  let release!: () => void;
+  const promise = new Promise<void>((resolve) => { release = resolve; });
+  const currentLock = locks[filename] || Promise.resolve();
+  locks[filename] = currentLock.then(() => promise);
+  await currentLock;
+  return () => {
+    if (locks[filename] === promise) delete locks[filename];
+    release();
+  };
+}
+
 export async function readJson<T>(filename: string, defaultContent: T): Promise<T> {
   const filePath = path.join(dataDir, filename);
   await ensureFile(filePath, defaultContent);
@@ -20,22 +35,39 @@ export async function readJson<T>(filename: string, defaultContent: T): Promise<
 }
 
 export async function writeJson<T>(filename: string, data: T): Promise<void> {
-  const filePath = path.join(dataDir, filename);
-  await ensureFile(filePath, []);
-  await fs.writeFile(filePath, JSON.stringify(data, null, 2));
+  const release = await acquireLock(filename);
+  try {
+    const filePath = path.join(dataDir, filename);
+    await ensureFile(filePath, []);
+    await fs.writeFile(filePath, JSON.stringify(data, null, 2));
+  } finally {
+    release();
+  }
 }
 
 export async function appendJson<T>(filename: string, item: T): Promise<void> {
-  const data = await readJson<T[]>(filename, []);
-  data.push(item);
-  await writeJson(filename, data);
+  const release = await acquireLock(filename);
+  try {
+    const data = await readJson<T[]>(filename, []);
+    data.push(item);
+    const filePath = path.join(dataDir, filename);
+    await fs.writeFile(filePath, JSON.stringify(data, null, 2));
+  } finally {
+    release();
+  }
 }
 
 export async function updateJson<T extends { id: string }>(filename: string, id: string, updates: Partial<T>): Promise<void> {
-  const data = await readJson<T[]>(filename, []);
-  const index = data.findIndex(item => item.id === id);
-  if (index !== -1) {
-    data[index] = { ...data[index], ...updates } as T;
-    await writeJson(filename, data);
+  const release = await acquireLock(filename);
+  try {
+    const data = await readJson<T[]>(filename, []);
+    const index = data.findIndex(item => item.id === id);
+    if (index !== -1) {
+      data[index] = { ...data[index], ...updates } as T;
+      const filePath = path.join(dataDir, filename);
+      await fs.writeFile(filePath, JSON.stringify(data, null, 2));
+    }
+  } finally {
+    release();
   }
 }

@@ -13,5 +13,13 @@
     "amount": -300,
     "description": "Office supplies",
     "status": "unreconciled"
+  },
+  {
+    "id": "1b91e08c-5f9f-4899-b17e-0e703b465f2c",
+    "workspaceId": "w_01",
+    "date": "2026-05-28",
+    "amount": -400,
+    "description": "Test hardware",
+    "status": "unreconciled"
   }
 ]

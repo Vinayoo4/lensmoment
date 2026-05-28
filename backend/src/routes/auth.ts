@@ -1,7 +1,9 @@
 import { Router } from 'express';
 import { v4 as uuidv4 } from 'uuid';
 import { readJson, writeJson } from '../storage/index.js';
+import jwt from 'jsonwebtoken';
 import { hashPassword, verifyPassword } from '../auth/crypto.js';
+import { getJwtSecret } from '../middleware/auth.js';
 import type { User } from '../../../shared/types/index.js';
 
 const router = Router();
@@ -25,7 +27,9 @@ router.post('/register', async (req, res) => {
 
   await writeJson('users.json', [...users, newUser]);
 
-  res.status(201).json({ id: newUser.id, name: newUser.name, role: newUser.role, workspaceId: newUser.workspaceId });
+  const token = jwt.sign({ id: newUser.id, role: newUser.role, workspaceId: newUser.workspaceId }, getJwtSecret(), { expiresIn: '7d' });
+
+  res.status(201).json({ token, id: newUser.id, name: newUser.name, role: newUser.role, workspaceId: newUser.workspaceId });
 });
 
 router.post('/login', async (req, res) => {
@@ -39,7 +43,9 @@ router.post('/login', async (req, res) => {
     return res.status(401).json({ error: 'Invalid credentials' });
   }
 
-  res.json({ id: user.id, name: user.name, role: user.role, workspaceId: user.workspaceId });
+  const token = jwt.sign({ id: user.id, role: user.role, workspaceId: user.workspaceId }, getJwtSecret(), { expiresIn: '7d' });
+
+  res.json({ token, id: user.id, name: user.name, role: user.role, workspaceId: user.workspaceId });
 });
 
 export default router;

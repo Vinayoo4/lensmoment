@@ -31,7 +31,7 @@ export default defineConfig({
       workbox: {
         runtimeCaching: [
           {
-            urlPattern: /^https:\/\/localhost:3000\/api\/.*/i,
+            urlPattern: ({ url }) => url.pathname.startsWith('/api'),
             handler: 'NetworkFirst',
             options: {
               cacheName: 'api-cache',
