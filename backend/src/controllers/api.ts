@@ -1,10 +1,10 @@
 import type { Request, Response } from 'express';
 import { v4 as uuidv4 } from 'uuid';
 import { readJson, writeJson, appendJson, updateJson } from '../storage/index.js';
-import type { KPIEntry, Transaction, AISuggestion, Workspace } from '../../../shared/types/index.js';
+import type { KPIEntry, Transaction, AISuggestion, Workspace, KPIDefinition } from '../../../shared/types/index.js';
 
 export async function getDashboardData(req: Request, res: Response) {
-  const workspaceId = req.query.workspaceId as string || 'w_01'; // Defaulting for simple MVP
+  const workspaceId = req.query.workspaceId as string || 'w_01';
 
   const kpis = await readJson<KPIEntry[]>('kpis.json', []);
   const transactions = await readJson<Transaction[]>('transactions.json', []);
@@ -25,7 +25,8 @@ export async function createKpi(req: Request, res: Response) {
     date,
     value: Number(value),
     isSynced: isSynced !== false,
-  };
+    workspaceId
+  } as any;
 
   await appendJson<KPIEntry>('kpis.json', newKpi);
   await runQuantifyEngine(workspaceId || 'w_01');
@@ -54,57 +55,113 @@ export async function updateTransactionStatus(req: Request, res: Response) {
   const { id } = req.params;
   const { status } = req.body;
   await updateJson<Transaction>('transactions.json', id as string, { status });
-  await runQuantifyEngine('w_01'); // Simple trigger
+
+  const transactions = await readJson<Transaction[]>('transactions.json', []);
+  const tx = transactions.find(t => t.id === id);
+  await runQuantifyEngine(tx?.workspaceId || 'w_01');
+
   res.json({ success: true });
 }
 
-// The internal Rule Engine logic
 export async function runQuantifyEngine(workspaceId: string) {
   const kpis = await readJson<KPIEntry[]>('kpis.json', []);
   const transactions = await readJson<Transaction[]>('transactions.json', []);
+  const existingSuggestions = await readJson<AISuggestion[]>('suggestions.json', []);
+  const kpiDefs = await readJson<KPIDefinition[]>('kpi_defs.json', []);
 
-  const suggestions: AISuggestion[] = [];
+  const newSuggestions: AISuggestion[] = [];
 
-  // Group KPIs
-  const kpisByDef = kpis.reduce((acc, kpi) => {
+  const addSuggestion = (type: string, trigger: string, text: string) => {
+    const isDuplicate = existingSuggestions.some(s => s.workspaceId === workspaceId && s.type === type && s.trigger === trigger && s.status !== 'dismissed');
+    if (!isDuplicate && !newSuggestions.some(s => s.type === type && s.trigger === trigger)) {
+      newSuggestions.push({
+        id: uuidv4(),
+        workspaceId,
+        type,
+        trigger,
+        text,
+        status: 'todo'
+      });
+    }
+  };
+
+  const workspaceKpis = kpis.filter(k => (k as any).workspaceId === workspaceId || !k.kpiId);
+
+  const kpisByDef = workspaceKpis.reduce((acc, kpi) => {
     if (!acc[kpi.kpiId]) acc[kpi.kpiId] = [];
     acc[kpi.kpiId].push(kpi);
     return acc;
   }, {} as Record<string, KPIEntry[]>);
 
+  let currentRevenue = 0;
+  let previousRevenue = 0;
+
   for (const [kpiId, entries] of Object.entries(kpisByDef)) {
     if (!entries) continue;
-    // Sort by date (assuming date strings sort correctly)
     const sorted = [...entries].sort((a, b) => (a.date || '').localeCompare(b.date || ''));
-    const recent = sorted.slice(-2);
-    if (recent.length === 2 && recent[1] && recent[0] && recent[1].value < recent[0].value) {
-      suggestions.push({
-        id: uuidv4(),
-        workspaceId,
-        type: 'trend_down',
-        trigger: 'traffic_drop',
-        text: `Alert: KPI dropped from ${recent[0].value} to ${recent[1].value}.`,
-        status: 'todo'
-      });
+
+    // Rule: KPI trend down 3+ consecutive days
+    if (sorted.length >= 4) {
+      const last4 = sorted.slice(-4);
+      if (last4[0].value > last4[1].value && last4[1].value > last4[2].value && last4[2].value > last4[3].value) {
+        const def = kpiDefs.find(d => d.id === kpiId);
+        addSuggestion('trend_down', kpiId, `Alert: Declining trend in ${def?.name || kpiId} over 3+ days.`);
+      }
+    }
+
+    const def: any = kpiDefs.find(d => d.id === kpiId);
+
+    // Rule: KPI value below target by 20%+
+    if (def && def.targetValue && sorted.length > 0) {
+      const latest = sorted[sorted.length - 1];
+      if (latest.value < (def.targetValue * 0.8)) {
+        addSuggestion('below_target', kpiId, `Alert: ${def.name} is below target by 20% or more.`);
+      }
+    } else if (def && def.id === 'k_revenue' && sorted.length > 0) {
+        const latest = sorted[sorted.length - 1];
+        if (latest.value < (5000 * 0.8)) {
+            addSuggestion('below_target', kpiId, `Alert: Daily Revenue is below target by 20% or more.`);
+        }
+    }
+
+    // Rule: Customer Return Rate below 40%
+    if (kpiId === 'k_retention' && sorted.length > 0) {
+      const latest = sorted[sorted.length - 1];
+      if (latest.value < 40) {
+        addSuggestion('retention_risk', kpiId, `Retention risk: Customer Return Rate below 40%.`);
+      }
+    }
+
+    // Capture Revenue for WoA Calculation
+    if (kpiId === 'k_revenue' && sorted.length >= 14) {
+      currentRevenue = sorted.slice(-7).reduce((sum, e) => sum + e.value, 0);
+      previousRevenue = sorted.slice(-14, -7).reduce((sum, e) => sum + e.value, 0);
     }
   }
 
-  // Accounting discrepancy rule
-  const unreconciledAmount = transactions
-    .filter(t => t.workspaceId === workspaceId && t.status === 'unreconciled')
-    .reduce((sum, t) => sum + t.amount, 0);
-
-  if (unreconciledAmount !== 0) {
-    suggestions.push({
-      id: uuidv4(),
-      workspaceId,
-      type: 'accounting_gap',
-      trigger: 'unreconciled',
-      text: `Reconciliation warning: You have unassigned transaction gaps totaling $${unreconciledAmount}.`,
-      status: 'todo'
-    });
+  // Rule: Revenue up 10%+ week over week
+  if (previousRevenue > 0) {
+    const growth = (currentRevenue - previousRevenue) / previousRevenue;
+    if (growth >= 0.10) {
+      addSuggestion('positive_momentum', 'k_revenue', `Positive momentum: Revenue up ${(growth*100).toFixed(0)}% week over week.`);
+    }
   }
 
-  // Replace existing suggestions with new ones for simplicity
-  await writeJson('suggestions.json', suggestions);
+  // Accounting rules
+  const unreconciledTx = transactions.filter(t => t.workspaceId === workspaceId && t.status === 'unreconciled');
+
+  // Rule: Unreconciled transactions > 5
+  if (unreconciledTx.length > 5) {
+    addSuggestion('reconciliation_needed', 'transactions', `Reconciliation needed: You have ${unreconciledTx.length} unreconciled transactions.`);
+  }
+
+  // Rule: Unreconciled amount > ₹10,000
+  const unreconciledAmount = unreconciledTx.reduce((sum, t) => sum + t.amount, 0);
+  if (unreconciledAmount > 10000) {
+    addSuggestion('large_reconciliation_gap', 'unreconciled_amount', `Large reconciliation gap: You have unassigned transaction gaps totaling ₹${unreconciledAmount}.`);
+  }
+
+  if (newSuggestions.length > 0) {
+      await writeJson('suggestions.json', [...existingSuggestions, ...newSuggestions]);
+  }
 }
