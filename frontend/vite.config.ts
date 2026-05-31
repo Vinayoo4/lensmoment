@@ -9,29 +9,46 @@ export default defineConfig({
     vue(),
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['icons/icon-192x192.png', 'icons/icon-512x512.png'],
+      includeAssets: ['icons/icon-192x192.png', 'icons/icon-512x512.png', 'apple-touch-icon.png', 'offline.html'],
       manifest: {
-        name: 'Quantify Suite',
-        short_name: 'Quantify AI',
+        name: 'Quantify Precision AI',
+        short_name: 'QuantifyAI',
         description: 'Business intelligence and accounting PWA',
         theme_color: '#4f46e5',
+        background_color: '#f5f3ff',
+        display: 'standalone',
+        start_url: '/',
         icons: [
           {
-            src: 'icons/icon-192x192.png',
+            src: '/icons/icon-192x192.png',
             sizes: '192x192',
             type: 'image/png'
           },
           {
-            src: 'icons/icon-512x512.png',
+            src: '/icons/icon-192x192.png',
+            sizes: '192x192',
+            type: 'image/png',
+            purpose: 'maskable'
+          },
+          {
+            src: '/icons/icon-512x512.png',
             sizes: '512x512',
             type: 'image/png'
+          },
+          {
+            src: '/icons/icon-512x512.png',
+            sizes: '512x512',
+            type: 'image/png',
+            purpose: 'maskable'
           }
         ]
       },
       workbox: {
+        navigateFallback: '/offline.html',
+        globPatterns: ['**/*.{js,css,html,png,svg,woff2}'],
         runtimeCaching: [
           {
-            urlPattern: /^https:\/\/localhost:3000\/api\/.*/i,
+            urlPattern: /^\/api\/.*/i,
             handler: 'NetworkFirst',
             options: {
               cacheName: 'api-cache',

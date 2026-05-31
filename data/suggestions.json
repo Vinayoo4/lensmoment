@@ -1,18 +1,42 @@
 [
   {
-    "id": "fefc61a1-4c2c-4940-8156-b27f2537dc93",
+    "id": "6100281b-2ab8-424d-b9b2-4c9a7e898431",
     "workspaceId": "w_01",
     "type": "trend_down",
-    "trigger": "traffic_drop",
-    "text": "Alert: KPI dropped from 150 to 50.",
+    "trigger": "k_traffic",
+    "text": "Alert: Declining trend in Daily Foot Traffic over last 3 days.",
     "status": "todo"
   },
   {
-    "id": "9b8153f4-cfe6-491d-90a9-5fbd38214a6e",
+    "id": "e0853e34-da59-4d09-839d-cacc356d211f",
     "workspaceId": "w_01",
-    "type": "accounting_gap",
-    "trigger": "unreconciled",
-    "text": "Reconciliation warning: You have unassigned transaction gaps totaling $-300.",
+    "type": "below_target",
+    "trigger": "k_revenue",
+    "text": "Alert: Daily Revenue is 20% below target.",
     "status": "todo"
+  },
+  {
+    "id": "9f531b79-b550-4a3f-b630-913383f702d2",
+    "workspaceId": "w_01",
+    "type": "unreconciled_count",
+    "trigger": "transactions",
+    "text": "Reconciliation needed: You have > 5 unreconciled transactions.",
+    "status": "todo"
+  },
+  {
+    "id": "077a843e-e4a2-4697-b1ff-1219bab84848",
+    "workspaceId": "w_01",
+    "type": "retention_risk",
+    "trigger": "k_retention",
+    "text": "Retention risk: Customer Return Rate below 40%.",
+    "status": "todo"
+  },
+  {
+    "id": "997f97fe-b02f-41ee-878d-e9f7fd7abc1d",
+    "workspaceId": "w_01",
+    "type": "positive_momentum",
+    "trigger": "k_revenue",
+    "text": "Positive momentum: Revenue up 10% week over week.",
+    "status": "done"
   }
 ]

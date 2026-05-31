@@ -1,30 +1,1202 @@
 [
   {
-    "id": "39ad532c-1025-4578-9e35-7a0d758845d3",
+    "id": "a19a0c24-1e71-4874-bb08-b2a74ff8e32b",
     "kpiId": "k_traffic",
-    "date": "2026-05-27",
-    "value": 100,
-    "isSynced": true
+    "date": "2026-05-02",
+    "value": 101,
+    "isSynced": true,
+    "workspaceId": "w_01"
   },
   {
-    "id": "60a40a82-8969-46b1-be08-ccbc42a25ae6",
+    "id": "ff8ec4b5-81da-4447-9801-08f9f3ecb3b5",
+    "kpiId": "k_traffic",
+    "date": "2026-05-03",
+    "value": 99,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "13f1ae55-8eea-496e-a656-9d091675e74e",
+    "kpiId": "k_traffic",
+    "date": "2026-05-04",
+    "value": 107,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "fb568f10-dc36-4bd7-9790-0e072be7bff6",
+    "kpiId": "k_traffic",
+    "date": "2026-05-05",
+    "value": 106,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "668d9527-460a-4fe7-8f65-7632aca59bfa",
+    "kpiId": "k_traffic",
+    "date": "2026-05-06",
+    "value": 103,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "5885607f-76e8-4a36-a51b-ffc421ea676e",
+    "kpiId": "k_traffic",
+    "date": "2026-05-07",
+    "value": 95,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "d96ad06e-3424-4012-a3d4-b91f9bf6193d",
+    "kpiId": "k_traffic",
+    "date": "2026-05-08",
+    "value": 90,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "1db9eebb-6e44-419b-aef7-4e240f9e4148",
+    "kpiId": "k_traffic",
+    "date": "2026-05-09",
+    "value": 93,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "f7fbdce2-9769-48de-a64d-3815ce29d50c",
+    "kpiId": "k_traffic",
+    "date": "2026-05-10",
+    "value": 97,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "9df2784b-af34-4846-b9e5-6306cfbff636",
+    "kpiId": "k_traffic",
+    "date": "2026-05-11",
+    "value": 100,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "cd4f25bc-84c2-4ce5-9d70-f622c75aa7a9",
+    "kpiId": "k_traffic",
+    "date": "2026-05-12",
+    "value": 93,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "0a7e7438-3ff5-4749-ade7-cf817c516ddb",
+    "kpiId": "k_traffic",
+    "date": "2026-05-13",
+    "value": 104,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "bf26a5e3-306a-4caf-b28e-9143323ab7fd",
+    "kpiId": "k_traffic",
+    "date": "2026-05-14",
+    "value": 99,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "6bf8b6b9-433a-403b-bf6b-b25c9e883eca",
+    "kpiId": "k_traffic",
+    "date": "2026-05-15",
+    "value": 96,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "9d3e87aa-f281-4070-81d2-606050c67ca9",
+    "kpiId": "k_traffic",
+    "date": "2026-05-16",
+    "value": 96,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "7e4b9d58-b999-40e9-851f-259f68fa8293",
+    "kpiId": "k_traffic",
+    "date": "2026-05-17",
+    "value": 102,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "9064e043-d484-4613-b34c-7e2c7cf62098",
+    "kpiId": "k_traffic",
+    "date": "2026-05-18",
+    "value": 92,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "da6214ab-69fd-4a59-9d97-b1b93b98949b",
+    "kpiId": "k_traffic",
+    "date": "2026-05-19",
+    "value": 91,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "8a8ab3ff-435d-4bf3-b338-d337754aa286",
+    "kpiId": "k_traffic",
+    "date": "2026-05-20",
+    "value": 98,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "1086921f-231e-4d5d-bdc9-b7c6e206a65b",
+    "kpiId": "k_traffic",
+    "date": "2026-05-21",
+    "value": 96,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "bdb953a8-6b7c-472e-98b5-20a3cd1e2218",
+    "kpiId": "k_traffic",
+    "date": "2026-05-22",
+    "value": 109,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "e669467a-3701-4707-8558-4da314b0e107",
+    "kpiId": "k_traffic",
+    "date": "2026-05-23",
+    "value": 102,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "fb8599e1-61df-4104-ae2e-06127cd75957",
+    "kpiId": "k_traffic",
+    "date": "2026-05-24",
+    "value": 107,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "15b607f4-3c2b-46ea-b19e-adb1c132ce72",
+    "kpiId": "k_traffic",
+    "date": "2026-05-25",
+    "value": 106,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "69ae11da-2855-4eee-ad41-8c0e3663e6c8",
+    "kpiId": "k_traffic",
+    "date": "2026-05-26",
+    "value": 109,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "86fecead-230a-4461-a270-7adcd023258a",
+    "kpiId": "k_traffic",
+    "date": "2026-05-27",
+    "value": 93,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "85955a2f-0846-462a-a464-584ec14ea2dd",
     "kpiId": "k_traffic",
     "date": "2026-05-28",
+    "value": 90,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "84ba7001-9e23-4eeb-bc8e-0950bc4a84e6",
+    "kpiId": "k_traffic",
+    "date": "2026-05-29",
+    "value": 79,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "ebfbe0bc-897d-40d5-9bdf-0ca5b1a3c6f1",
+    "kpiId": "k_traffic",
+    "date": "2026-05-30",
+    "value": 77,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "ec2c5bc7-d399-411b-9d05-9e8dd156ee89",
+    "kpiId": "k_traffic",
+    "date": "2026-05-31",
+    "value": 52,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "483e4bdf-4ef2-4531-a850-d7618472b660",
+    "kpiId": "k_revenue",
+    "date": "2026-05-02",
+    "value": 5053,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "66a34ed5-7292-4b2a-99fd-0db5ee58ee8c",
+    "kpiId": "k_revenue",
+    "date": "2026-05-03",
+    "value": 5429,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "c15c2085-91bf-432c-af00-7a85edcc054d",
+    "kpiId": "k_revenue",
+    "date": "2026-05-04",
+    "value": 4583,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "4baac01c-aa07-4de7-8dca-5f29a5ff8078",
+    "kpiId": "k_revenue",
+    "date": "2026-05-05",
+    "value": 4801,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "13fb69a1-8f5e-4c6d-89ee-fcaffee1b811",
+    "kpiId": "k_revenue",
+    "date": "2026-05-06",
+    "value": 4688,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "3f2a6c44-f8e7-4c5b-adb9-97e080e80cd9",
+    "kpiId": "k_revenue",
+    "date": "2026-05-07",
+    "value": 4687,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "6f5fc6d0-fba9-43d8-bd03-77837df929d7",
+    "kpiId": "k_revenue",
+    "date": "2026-05-08",
+    "value": 5315,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "6a6a9cc5-ee53-4984-ae04-b9f41d903988",
+    "kpiId": "k_revenue",
+    "date": "2026-05-09",
+    "value": 4953,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "ce0df712-6b15-4307-8dc8-45143aff396c",
+    "kpiId": "k_revenue",
+    "date": "2026-05-10",
+    "value": 5388,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "34f4d137-e71d-4d8f-9d3f-b9df0fcacc88",
+    "kpiId": "k_revenue",
+    "date": "2026-05-11",
+    "value": 5345,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "830c9f8e-ab76-4459-94f0-d70aacb0368c",
+    "kpiId": "k_revenue",
+    "date": "2026-05-12",
+    "value": 4637,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "ef8cd06e-9e6b-46bc-8c2f-97aca2756292",
+    "kpiId": "k_revenue",
+    "date": "2026-05-13",
+    "value": 5265,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "e8fe3f56-c98c-42e7-b38c-9fa91d26840b",
+    "kpiId": "k_revenue",
+    "date": "2026-05-14",
+    "value": 5093,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "a10bb57d-2245-445f-a699-d2825cb89a61",
+    "kpiId": "k_revenue",
+    "date": "2026-05-15",
+    "value": 4975,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "cb7011af-48ee-42f5-9d11-f686fafad1b7",
+    "kpiId": "k_revenue",
+    "date": "2026-05-16",
+    "value": 4619,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "c518a730-c59e-4648-82b4-03f95be2cf86",
+    "kpiId": "k_revenue",
+    "date": "2026-05-17",
+    "value": 5174,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "0790902d-1164-48ad-93cb-04fa6a80aee1",
+    "kpiId": "k_revenue",
+    "date": "2026-05-18",
+    "value": 5043,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "4099050d-226f-4ef9-980b-714a4616b878",
+    "kpiId": "k_revenue",
+    "date": "2026-05-19",
+    "value": 4824,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "d1cc8d26-5378-412e-bdac-2277a7f608bf",
+    "kpiId": "k_revenue",
+    "date": "2026-05-20",
+    "value": 4910,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "a8dc12b1-5b72-4689-ae2d-ffeefb5bd23d",
+    "kpiId": "k_revenue",
+    "date": "2026-05-21",
+    "value": 5125,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "5a23b0da-0d43-4876-a61b-f950808de512",
+    "kpiId": "k_revenue",
+    "date": "2026-05-22",
+    "value": 4737,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "f1e602b6-67d2-4308-b1fe-a116003324ba",
+    "kpiId": "k_revenue",
+    "date": "2026-05-23",
+    "value": 4518,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "d336b72c-3d21-4221-8385-a2c27bf8a49c",
+    "kpiId": "k_revenue",
+    "date": "2026-05-24",
+    "value": 5191,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "b2952028-3f8f-42a5-b5e3-97bb2292bb67",
+    "kpiId": "k_revenue",
+    "date": "2026-05-25",
+    "value": 4830,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "f7ed335a-9a48-4e3a-8db5-1b45e3fc95d1",
+    "kpiId": "k_revenue",
+    "date": "2026-05-26",
+    "value": 5197,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "e0694de5-8194-4e85-afb6-882e120bf609",
+    "kpiId": "k_revenue",
+    "date": "2026-05-27",
+    "value": 4578,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "519069f0-c51c-48fc-87d3-71ba4efb7f5a",
+    "kpiId": "k_revenue",
+    "date": "2026-05-28",
+    "value": 4846,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "d1879b89-2d3c-4403-af6e-2864afa43f4b",
+    "kpiId": "k_revenue",
+    "date": "2026-05-29",
+    "value": 4766,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "831a61e7-19e0-495a-bb5a-4bd17d0532b5",
+    "kpiId": "k_revenue",
+    "date": "2026-05-30",
+    "value": 5084,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "ac082e2c-d8a3-4df2-8341-31988f2ae66a",
+    "kpiId": "k_revenue",
+    "date": "2026-05-31",
+    "value": 5106,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "dd42892f-2a37-4e79-9e4b-84beb4c3959b",
+    "kpiId": "k_atv",
+    "date": "2026-05-02",
+    "value": 52,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "02741f71-bce9-416a-b2af-ab38eb0a7016",
+    "kpiId": "k_atv",
+    "date": "2026-05-03",
+    "value": 54,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "23868446-d8d7-48aa-ba0d-cda1f542e13b",
+    "kpiId": "k_atv",
+    "date": "2026-05-04",
+    "value": 51,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "18123c06-3632-43a4-8d00-2e414c2da858",
+    "kpiId": "k_atv",
+    "date": "2026-05-05",
     "value": 50,
-    "isSynced": true
+    "isSynced": true,
+    "workspaceId": "w_01"
   },
   {
-    "id": "e0d0e92d-f676-4c71-9b5e-a8ca9e88b243",
-    "kpiId": "k_traffic",
-    "date": "2026-05-27",
-    "value": 150,
-    "isSynced": true
+    "id": "be8df0eb-dffe-4f09-8d40-cc23a0a60343",
+    "kpiId": "k_atv",
+    "date": "2026-05-06",
+    "value": 47,
+    "isSynced": true,
+    "workspaceId": "w_01"
   },
   {
-    "id": "b9c949fd-cae2-4520-8f88-8900d1f0e181",
-    "kpiId": "k_traffic",
+    "id": "39766635-624b-4a8b-80c0-b74fa7b25f2c",
+    "kpiId": "k_atv",
+    "date": "2026-05-07",
+    "value": 51,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "52ad559a-ada2-46b5-9202-e689683199ba",
+    "kpiId": "k_atv",
+    "date": "2026-05-08",
+    "value": 51,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "9de1e48a-9ac0-4ac0-a5d7-0b886099fd7e",
+    "kpiId": "k_atv",
+    "date": "2026-05-09",
+    "value": 49,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "296baabd-9a25-424a-994f-b6c35913f116",
+    "kpiId": "k_atv",
+    "date": "2026-05-10",
+    "value": 53,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "bc12e29f-456e-4a50-a3cd-a35b0afae686",
+    "kpiId": "k_atv",
+    "date": "2026-05-11",
+    "value": 54,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "cc83f700-5b1f-4678-b595-09254e669ed6",
+    "kpiId": "k_atv",
+    "date": "2026-05-12",
+    "value": 45,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "7fd90d60-7518-4047-a570-b7b22b17cec4",
+    "kpiId": "k_atv",
+    "date": "2026-05-13",
+    "value": 54,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "1a1b0b7f-95fc-4a5b-a7c5-f28217c4f73f",
+    "kpiId": "k_atv",
+    "date": "2026-05-14",
+    "value": 50,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "f0c32200-1d11-49a1-b1e4-a3567d32f7ca",
+    "kpiId": "k_atv",
+    "date": "2026-05-15",
+    "value": 54,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "2a15534c-1708-4608-b017-6dddc66a2476",
+    "kpiId": "k_atv",
+    "date": "2026-05-16",
+    "value": 48,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "88ac4eb9-fda9-467c-a6e8-c32a64bf064a",
+    "kpiId": "k_atv",
+    "date": "2026-05-17",
+    "value": 52,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "44ea2005-f120-467f-9e7c-e7a7af30c4ae",
+    "kpiId": "k_atv",
+    "date": "2026-05-18",
+    "value": 49,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "9ba5febe-6bb6-4dab-8f3f-a570ab91ca1a",
+    "kpiId": "k_atv",
+    "date": "2026-05-19",
+    "value": 50,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "bccea679-7d94-466e-9dea-a6068e74bb87",
+    "kpiId": "k_atv",
+    "date": "2026-05-20",
+    "value": 45,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "9c05f7a2-483a-4cbe-8d8a-fc2362c66d08",
+    "kpiId": "k_atv",
+    "date": "2026-05-21",
+    "value": 54,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "00ac9bae-a1a2-4c5d-91a9-7ffcce002155",
+    "kpiId": "k_atv",
+    "date": "2026-05-22",
+    "value": 46,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "b9f4a0e1-4c62-4a4e-a4e3-61c36a1c6b25",
+    "kpiId": "k_atv",
+    "date": "2026-05-23",
+    "value": 54,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "1b31eb30-4185-4272-9593-90a86a6ee570",
+    "kpiId": "k_atv",
+    "date": "2026-05-24",
+    "value": 52,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "c82e8200-4c01-4c77-9f46-87d7a9b393a8",
+    "kpiId": "k_atv",
+    "date": "2026-05-25",
+    "value": 51,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "d255a50a-dd58-4f2e-a03b-7aadb4ce4712",
+    "kpiId": "k_atv",
+    "date": "2026-05-26",
+    "value": 51,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "329f5c67-399d-4d07-8843-cabe45e19195",
+    "kpiId": "k_atv",
     "date": "2026-05-27",
-    "value": 150,
-    "isSynced": true
+    "value": 51,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "3d7b2d79-d057-403f-82e2-e5b905ee982f",
+    "kpiId": "k_atv",
+    "date": "2026-05-28",
+    "value": 52,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "d6999cb3-cd22-4a41-8cd9-ab0646e45b70",
+    "kpiId": "k_atv",
+    "date": "2026-05-29",
+    "value": 50,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "be4fd87f-053e-47b4-9dd0-d5634f1e0339",
+    "kpiId": "k_atv",
+    "date": "2026-05-30",
+    "value": 47,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "7150a208-76c0-4dbf-a550-638a82459470",
+    "kpiId": "k_atv",
+    "date": "2026-05-31",
+    "value": 50,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "bae10faf-92a2-450f-9df3-398dfc9caf28",
+    "kpiId": "k_retention",
+    "date": "2026-05-02",
+    "value": 56,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "c5ea198b-a027-4a78-8d93-b6ebd1c707cf",
+    "kpiId": "k_retention",
+    "date": "2026-05-03",
+    "value": 60,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "86c51614-84d6-4cad-a207-3a066eef8297",
+    "kpiId": "k_retention",
+    "date": "2026-05-04",
+    "value": 59,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "c332399a-8aee-4537-99a5-0f88471d2f09",
+    "kpiId": "k_retention",
+    "date": "2026-05-05",
+    "value": 59,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "bbe0a0f2-88a9-410a-98b8-3c22dfd66af9",
+    "kpiId": "k_retention",
+    "date": "2026-05-06",
+    "value": 55,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "c6ed8450-287b-4787-a713-f17c066e2e8a",
+    "kpiId": "k_retention",
+    "date": "2026-05-07",
+    "value": 54,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "28ff08f1-55bf-4a64-a16f-dba1862a318f",
+    "kpiId": "k_retention",
+    "date": "2026-05-08",
+    "value": 65,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "f735ab4b-ab5b-434d-8ea0-60e6929d572a",
+    "kpiId": "k_retention",
+    "date": "2026-05-09",
+    "value": 63,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "507d9e61-0844-410c-98d6-be681deb8020",
+    "kpiId": "k_retention",
+    "date": "2026-05-10",
+    "value": 62,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "1c5d77a8-2188-45d6-9a96-0c9767d6cb08",
+    "kpiId": "k_retention",
+    "date": "2026-05-11",
+    "value": 60,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "36666f8e-35b8-4f0a-87ab-882356bbb4df",
+    "kpiId": "k_retention",
+    "date": "2026-05-12",
+    "value": 60,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "7d932b18-3065-48cd-ae6e-cf51856fe8d9",
+    "kpiId": "k_retention",
+    "date": "2026-05-13",
+    "value": 61,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "d1320f6d-bbeb-478f-8420-a5803d8ed2e0",
+    "kpiId": "k_retention",
+    "date": "2026-05-14",
+    "value": 57,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "1fe1b5dc-cab8-4731-8c76-ba97a3e82b53",
+    "kpiId": "k_retention",
+    "date": "2026-05-15",
+    "value": 57,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "56cf112c-8edb-4625-acb7-1b6763090076",
+    "kpiId": "k_retention",
+    "date": "2026-05-16",
+    "value": 54,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "84a4f9e0-3310-4e26-8722-c1bd1609bb37",
+    "kpiId": "k_retention",
+    "date": "2026-05-17",
+    "value": 60,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "831ddcdf-5dc1-4828-b3e8-68d3e8deec4d",
+    "kpiId": "k_retention",
+    "date": "2026-05-18",
+    "value": 58,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "47e1b725-3282-4de6-801d-71a13f74c954",
+    "kpiId": "k_retention",
+    "date": "2026-05-19",
+    "value": 65,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "3e0f9b50-5b6d-4d42-91f6-929b4b835e32",
+    "kpiId": "k_retention",
+    "date": "2026-05-20",
+    "value": 56,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "fb80c1d2-d237-4283-ba44-4a082f634af2",
+    "kpiId": "k_retention",
+    "date": "2026-05-21",
+    "value": 64,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "a9b7fad2-efff-4758-8c71-9cb8cc9a851f",
+    "kpiId": "k_retention",
+    "date": "2026-05-22",
+    "value": 64,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "bf1b39f3-cae0-4a32-92de-3e56a3420c60",
+    "kpiId": "k_retention",
+    "date": "2026-05-23",
+    "value": 64,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "d3095803-cebf-450c-9e20-10ed44dde1af",
+    "kpiId": "k_retention",
+    "date": "2026-05-24",
+    "value": 65,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "0a2a1eb6-91af-43e7-8fd2-972824bd89fb",
+    "kpiId": "k_retention",
+    "date": "2026-05-25",
+    "value": 58,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "4263c12f-3fd0-49c7-9d7a-a5a69a22017d",
+    "kpiId": "k_retention",
+    "date": "2026-05-26",
+    "value": 57,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "064e7bab-04e5-4ad4-8ddc-a830fec53f89",
+    "kpiId": "k_retention",
+    "date": "2026-05-27",
+    "value": 55,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "7d2abb0b-55f4-45e6-9cd4-4540512dfd99",
+    "kpiId": "k_retention",
+    "date": "2026-05-28",
+    "value": 60,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "bb097af8-82b1-4b57-bc92-0a903c1fd858",
+    "kpiId": "k_retention",
+    "date": "2026-05-29",
+    "value": 65,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "86fac1b8-b555-4b48-8c16-e89e3895cd98",
+    "kpiId": "k_retention",
+    "date": "2026-05-30",
+    "value": 60,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "47902ba2-5c36-40a4-bfe8-da424dbd29b5",
+    "kpiId": "k_retention",
+    "date": "2026-05-31",
+    "value": 62,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "7fb65e5a-63af-4c2b-ad1a-fc6d4e4d4c57",
+    "kpiId": "k_inventory",
+    "date": "2026-05-02",
+    "value": 10,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "77c1d7a7-228c-44c4-acac-02c40fa37b90",
+    "kpiId": "k_inventory",
+    "date": "2026-05-03",
+    "value": 9,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "a8fb0529-7a0e-478f-86c5-7a9b9fed623e",
+    "kpiId": "k_inventory",
+    "date": "2026-05-04",
+    "value": 9,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "7225cb67-9573-4463-b987-1838259013fa",
+    "kpiId": "k_inventory",
+    "date": "2026-05-05",
+    "value": 10,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "19a950a4-f85b-4fcc-9cc4-17aa8f509e8a",
+    "kpiId": "k_inventory",
+    "date": "2026-05-06",
+    "value": 10,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "beed3e9a-85a2-4f65-bb0f-3e9102eb07fd",
+    "kpiId": "k_inventory",
+    "date": "2026-05-07",
+    "value": 10,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "f7ae7ba5-f1e1-4c11-97e1-b1e0dd8585ae",
+    "kpiId": "k_inventory",
+    "date": "2026-05-08",
+    "value": 9,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "5590e2ff-8d69-4b93-aeac-477040522630",
+    "kpiId": "k_inventory",
+    "date": "2026-05-09",
+    "value": 9,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "01f46b42-1814-4566-8fd8-d6695a221f32",
+    "kpiId": "k_inventory",
+    "date": "2026-05-10",
+    "value": 9,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "48c45b50-aba7-4263-8555-2d68a2b8e6d4",
+    "kpiId": "k_inventory",
+    "date": "2026-05-11",
+    "value": 9,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "f5749517-e6b9-4bc6-9222-d93c74c89fb6",
+    "kpiId": "k_inventory",
+    "date": "2026-05-12",
+    "value": 10,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "89e3d505-dbfa-41bf-8cf1-74ad39c12140",
+    "kpiId": "k_inventory",
+    "date": "2026-05-13",
+    "value": 10,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "b850e734-15e4-4104-b22d-69b794762352",
+    "kpiId": "k_inventory",
+    "date": "2026-05-14",
+    "value": 10,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "30fc47f5-ee79-4a1a-b393-23a31c945993",
+    "kpiId": "k_inventory",
+    "date": "2026-05-15",
+    "value": 10,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "4a178762-45a6-4728-b767-344e8a35cf7e",
+    "kpiId": "k_inventory",
+    "date": "2026-05-16",
+    "value": 9,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "dc5f0ce5-7ff1-4dbe-a47d-d9cd3c0cda89",
+    "kpiId": "k_inventory",
+    "date": "2026-05-17",
+    "value": 9,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "789441a2-71de-4f2b-8522-982dee911b14",
+    "kpiId": "k_inventory",
+    "date": "2026-05-18",
+    "value": 10,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "a6924e9a-34a4-4f48-81bb-b8a42f1711af",
+    "kpiId": "k_inventory",
+    "date": "2026-05-19",
+    "value": 10,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "c448ee3a-90c3-4892-a431-8495a346a163",
+    "kpiId": "k_inventory",
+    "date": "2026-05-20",
+    "value": 10,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "612fd95f-77d7-4958-9a3c-b403a92f4385",
+    "kpiId": "k_inventory",
+    "date": "2026-05-21",
+    "value": 10,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "aca63e1f-afc6-41f6-9cf7-d3515c3fff12",
+    "kpiId": "k_inventory",
+    "date": "2026-05-22",
+    "value": 10,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "2430ccd9-925a-4aed-a7bd-f30d9711ae46",
+    "kpiId": "k_inventory",
+    "date": "2026-05-23",
+    "value": 9,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "bb9193f4-1160-4d1e-accb-ccf76375b4b2",
+    "kpiId": "k_inventory",
+    "date": "2026-05-24",
+    "value": 10,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "e0d71cd2-6cfe-4951-9e85-3c6ae2e14dcf",
+    "kpiId": "k_inventory",
+    "date": "2026-05-25",
+    "value": 10,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "0566cb9b-9fec-4350-a5d9-ad6c225bdedf",
+    "kpiId": "k_inventory",
+    "date": "2026-05-26",
+    "value": 10,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "c979c2cc-f6b9-4416-bc31-eb48a9b069d9",
+    "kpiId": "k_inventory",
+    "date": "2026-05-27",
+    "value": 9,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "ec5498bd-e58f-4090-bed8-f2504e7a4214",
+    "kpiId": "k_inventory",
+    "date": "2026-05-28",
+    "value": 10,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "235b0ffa-2395-4b96-ad62-1d3a6020cb9b",
+    "kpiId": "k_inventory",
+    "date": "2026-05-29",
+    "value": 9,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "3b56aaff-dd67-48fb-bdf4-edbdac307592",
+    "kpiId": "k_inventory",
+    "date": "2026-05-30",
+    "value": 10,
+    "isSynced": true,
+    "workspaceId": "w_01"
+  },
+  {
+    "id": "c75ee433-6217-4aa8-82ba-32913b65bd8c",
+    "kpiId": "k_inventory",
+    "date": "2026-05-31",
+    "value": 9,
+    "isSynced": true,
+    "workspaceId": "w_01"
   }
 ]

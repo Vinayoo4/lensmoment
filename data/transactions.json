@@ -1,17 +1,162 @@
 [
   {
-    "id": "c3593b3c-59ed-43f0-9db4-9309629a1299",
+    "id": "e5ffcc72-45c5-40db-9773-729c09692672",
     "workspaceId": "w_01",
-    "amount": -200,
-    "description": "Buy desk",
+    "date": "2026-05-31",
+    "amount": 1634,
+    "description": "Transaction 1",
     "status": "reconciled"
   },
   {
-    "id": "a91b2854-0552-4eb8-8fe2-ea076a8abf25",
+    "id": "cb0ab8a1-53db-4d83-9ac9-d98ef2a32d93",
+    "workspaceId": "w_01",
+    "date": "2026-05-30",
+    "amount": 1614,
+    "description": "Transaction 2",
+    "status": "reconciled"
+  },
+  {
+    "id": "ddb08d2f-e1ba-4b00-a371-475fbf2d189b",
+    "workspaceId": "w_01",
+    "date": "2026-05-29",
+    "amount": 1302,
+    "description": "Transaction 3",
+    "status": "reconciled"
+  },
+  {
+    "id": "d6e7958a-8d31-47dd-b1a6-fa72f384dc52",
+    "workspaceId": "w_01",
+    "date": "2026-05-28",
+    "amount": 529,
+    "description": "Transaction 4",
+    "status": "reconciled"
+  },
+  {
+    "id": "721248a3-5171-4fe6-a8aa-644e3ca5caec",
     "workspaceId": "w_01",
     "date": "2026-05-27",
-    "amount": -300,
-    "description": "Office supplies",
+    "amount": 1026,
+    "description": "Transaction 5",
+    "status": "reconciled"
+  },
+  {
+    "id": "6d16649f-5161-4c95-9c87-7b226366acc3",
+    "workspaceId": "w_01",
+    "date": "2026-05-26",
+    "amount": 1347,
+    "description": "Transaction 6",
+    "status": "reconciled"
+  },
+  {
+    "id": "db53857b-a1a3-4124-b9cd-579eeb47da2f",
+    "workspaceId": "w_01",
+    "date": "2026-05-25",
+    "amount": 673,
+    "description": "Transaction 7",
+    "status": "reconciled"
+  },
+  {
+    "id": "b3cc51ef-a6b4-43d0-99ce-bfe3315352ae",
+    "workspaceId": "w_01",
+    "date": "2026-05-24",
+    "amount": 1962,
+    "description": "Transaction 8",
+    "status": "reconciled"
+  },
+  {
+    "id": "b2cc3a90-4229-46e2-8ca0-d02828bc2557",
+    "workspaceId": "w_01",
+    "date": "2026-05-23",
+    "amount": 884,
+    "description": "Transaction 9",
+    "status": "reconciled"
+  },
+  {
+    "id": "b789fdfe-ca78-4d1e-b41a-5b05459c4193",
+    "workspaceId": "w_01",
+    "date": "2026-05-22",
+    "amount": 1944,
+    "description": "Transaction 10",
+    "status": "reconciled"
+  },
+  {
+    "id": "509bfb29-0a07-419d-ba34-d8badc18e729",
+    "workspaceId": "w_01",
+    "date": "2026-05-21",
+    "amount": 1409,
+    "description": "Transaction 11",
+    "status": "reconciled"
+  },
+  {
+    "id": "15b51e56-9016-4fce-a3f5-b2039709c81c",
+    "workspaceId": "w_01",
+    "date": "2026-05-20",
+    "amount": 2408,
+    "description": "Transaction 12",
+    "status": "reconciled"
+  },
+  {
+    "id": "6c6ebc5b-c8b5-40d9-a0fe-4c54b79772c4",
+    "workspaceId": "w_01",
+    "date": "2026-05-19",
+    "amount": 1469,
+    "description": "Transaction 13",
+    "status": "unreconciled"
+  },
+  {
+    "id": "87bc789e-6d7d-4616-a728-aaa09a0c890e",
+    "workspaceId": "w_01",
+    "date": "2026-05-18",
+    "amount": 1871,
+    "description": "Transaction 14",
+    "status": "unreconciled"
+  },
+  {
+    "id": "4d664031-c371-44f4-bd7e-0e4c2a607423",
+    "workspaceId": "w_01",
+    "date": "2026-05-17",
+    "amount": 1105,
+    "description": "Transaction 15",
+    "status": "unreconciled"
+  },
+  {
+    "id": "c0070beb-3042-48b1-bef2-ac0eeb46ae21",
+    "workspaceId": "w_01",
+    "date": "2026-05-16",
+    "amount": 2487,
+    "description": "Transaction 16",
+    "status": "unreconciled"
+  },
+  {
+    "id": "095aaf23-53d0-408e-9c67-57098f1a7a11",
+    "workspaceId": "w_01",
+    "date": "2026-05-15",
+    "amount": 529,
+    "description": "Transaction 17",
+    "status": "unreconciled"
+  },
+  {
+    "id": "91357a45-b765-4de2-9a1f-5c323309cc0f",
+    "workspaceId": "w_01",
+    "date": "2026-05-14",
+    "amount": 2259,
+    "description": "Transaction 18",
+    "status": "unreconciled"
+  },
+  {
+    "id": "72b79a58-b478-4199-afe1-f5b2aa78b0d7",
+    "workspaceId": "w_01",
+    "date": "2026-05-13",
+    "amount": 1065,
+    "description": "Transaction 19",
+    "status": "unreconciled"
+  },
+  {
+    "id": "8dc3949e-616f-4441-80b4-1afd3ce74a03",
+    "workspaceId": "w_01",
+    "date": "2026-05-12",
+    "amount": 2186,
+    "description": "Transaction 20",
     "status": "unreconciled"
   }
 ]

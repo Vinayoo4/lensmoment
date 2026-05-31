@@ -21,5 +21,8 @@
   "bugs": {
     "url": "https://github.com/Vinayoo4/lensmoment/issues"
   },
-  "homepage": "https://github.com/Vinayoo4/lensmoment#readme"
+  "homepage": "https://github.com/Vinayoo4/lensmoment#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.60.0"
+  }
 }
