@@ -12,8 +12,8 @@ export async function getKpis(req: Request, res: Response) {
 
 export async function createKpiDef(req: Request, res: Response) {
   const { workspaceId, name, unit, targetValue } = req.body;
-  const defs = await readJson<any[]>('kpi_defs.json', []);
-  const newDef = { id: `k_${uuidv4().slice(0, 8)}`, workspaceId, name, unit, targetValue };
+  const defs = await readJson<(KPIDefinition & { targetValue?: number })[]>('kpi_defs.json', []);
+  const newDef: KPIDefinition & { targetValue?: number } = { id: `k_${uuidv4().slice(0, 8)}`, workspaceId, name, unit, targetValue };
   await writeJson('kpi_defs.json', [...defs, newDef]);
   res.status(201).json(newDef);
 }
@@ -42,14 +42,14 @@ export async function createKpiEntry(req: Request, res: Response) {
   const { date, value, isSynced, workspaceId } = req.body;
 
   const entries = await readJson<KPIEntry[]>('kpis.json', []);
-  const newEntry = {
+  const newEntry: KPIEntry = {
     id: uuidv4(),
     kpiId: id,
     date,
     value: Number(value),
     isSynced: isSynced !== false,
     workspaceId
-  } as any;
+  };
 
   await writeJson('kpis.json', [...entries, newEntry]);
   await runQuantifyEngine(workspaceId || 'w_01');

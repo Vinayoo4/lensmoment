@@ -75,15 +75,16 @@ import { ref, onMounted, computed } from 'vue';
 import { useAppStore } from '../stores/app';
 import { API_BASE_URL } from '../config';
 import AppSidebar from '../components/layout/AppSidebar.vue';
+import type { Report, Transaction } from '../../../shared/types/index';
 
 const appStore = useAppStore();
 
-const reports = ref<any[]>([]);
+const reports = ref<Report[]>([]);
 const loading = ref(true);
 const isGenerating = ref(false);
 
 const form = ref({ month: '', title: '' });
-const activeReport = ref<any>(null);
+const activeReport = ref<Report | null>(null);
 
 const canGenerate = computed(() => {
   return ['Workspace Admin', 'Financial Manager', 'superadmin'].includes(appStore.user?.role || '');
@@ -118,12 +119,12 @@ const generateReport = async () => {
     const transactions = await txRes.json();
 
     const [year, month] = form.value.month.split('-');
-    const filteredTx = transactions.filter((t: any) => t.date.startsWith(`${year}-${month}`));
+    const filteredTx = transactions.filter((t: Transaction) => t.date.startsWith(`${year}-${month}`));
 
-    const totalIncome = filteredTx.filter((t: any) => t.amount > 0).reduce((sum: number, t: any) => sum + t.amount, 0);
-    const totalExpenses = filteredTx.filter((t: any) => t.amount < 0).reduce((sum: number, t: any) => sum + Math.abs(t.amount), 0);
+    const totalIncome = filteredTx.filter((t: Transaction) => t.amount > 0).reduce((sum: number, t: Transaction) => sum + t.amount, 0);
+    const totalExpenses = filteredTx.filter((t: Transaction) => t.amount < 0).reduce((sum: number, t: Transaction) => sum + Math.abs(t.amount), 0);
     const netPosition = totalIncome - totalExpenses;
-    const unreconciled = filteredTx.filter((t: any) => t.status === 'unreconciled').length;
+    const unreconciled = filteredTx.filter((t: Transaction) => t.status === 'unreconciled').length;
 
     const content = `QUANTIFY AI - FINANCIAL REPORT
 ==============================
@@ -145,7 +146,7 @@ Unreconciled:    ${unreconciled}
 
 TOP TRANSACTIONS
 ----------------
-${filteredTx.slice(0, 5).map((t: any) => `${t.date} | ${t.description.padEnd(20)} | ₹${t.amount}`).join('\n')}
+${filteredTx.slice(0, 5).map((t: Transaction) => `${t.date} | ${t.description.padEnd(20)} | ₹${t.amount}`).join('\n')}
 
 ==============================
 End of Report
@@ -171,11 +172,11 @@ End of Report
   }
 };
 
-const viewReport = (report: any) => {
+const viewReport = (report: Report) => {
   activeReport.value = report;
 };
 
-const exportReport = (report: any) => {
+const exportReport = (report: Report) => {
   const blob = new Blob([report.content], { type: 'text/plain;charset=utf-8' });
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');

@@ -79,17 +79,18 @@ import { ref, onMounted, computed } from 'vue';
 import { useAppStore } from '../stores/app';
 import { API_BASE_URL } from '../config';
 import AppSidebar from '../components/layout/AppSidebar.vue';
+import type { ReconciliationState, Transaction } from '../../../shared/types/index';
 
 const appStore = useAppStore();
 
 const loading = ref(true);
-const history = ref<any[]>([]);
-const transactions = ref<any[]>([]);
+const history = ref<ReconciliationState[]>([]);
+const transactions = ref<Transaction[]>([]);
 
 const activeProcess = ref(false);
 const activeMonth = ref('');
 
-const unreconciledTx = ref<any[]>([]);
+const unreconciledTx = ref<(Transaction & { localReconciled?: boolean })[]>([]);
 
 const getHeaders = () => {
    return { 'Authorization': `Bearer ${appStore.user?.token}` };
@@ -132,7 +133,7 @@ const startReconciliation = () => {
   activeProcess.value = true;
 };
 
-const resumeDraft = (rec: any) => {
+const resumeDraft = (rec: ReconciliationState) => {
   activeMonth.value = rec.month;
   unreconciledTx.value = transactions.value
     .filter(t => t.status === 'unreconciled')

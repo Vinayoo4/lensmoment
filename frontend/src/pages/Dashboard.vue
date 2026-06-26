@@ -111,15 +111,16 @@ import { useRouter } from 'vue-router';
 import { useAppStore } from '../stores/app';
 import { API_BASE_URL } from '../config';
 import AppSidebar from '../components/layout/AppSidebar.vue';
+import type { KPIEntry, Transaction, AISuggestion, KPIDefinition } from '../../../shared/types/index';
 
 const appStore = useAppStore();
 const router = useRouter();
 
 const data = ref({
-  kpis: [] as any[],
-  transactions: [] as any[],
-  suggestions: [] as any[],
-  kpiDefs: [] as any[]
+  kpis: [] as KPIEntry[],
+  transactions: [] as Transaction[],
+  suggestions: [] as AISuggestion[],
+  kpiDefs: [] as KPIDefinition[]
 });
 
 const loading = ref(true);
@@ -177,7 +178,7 @@ const kpiSummaries = computed(() => {
   const cutoffDate = new Date();
   cutoffDate.setDate(cutoffDate.getDate() - range);
 
-  const summaries: any[] = [];
+  const summaries: { id: string; name: string; unit: string; latestValue: number; trend: number; trendPercent: number; recentValues: number[] }[] = [];
 
   data.value.kpiDefs.forEach(def => {
     let entries = data.value.kpis.filter(k => k.kpiId === def.id && new Date(k.date) >= cutoffDate);

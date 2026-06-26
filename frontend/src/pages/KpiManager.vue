@@ -111,10 +111,11 @@ import { ref, onMounted } from 'vue';
 import { useAppStore } from '../stores/app';
 import { API_BASE_URL } from '../config';
 import AppSidebar from '../components/layout/AppSidebar.vue';
+import type { KPIDefinition } from '../../../shared/types/index';
 
 const appStore = useAppStore();
 
-const kpiDefs = ref<any[]>([]);
+const kpiDefs = ref<KPIDefinition[]>([]);
 const showDefForm = ref(false);
 const defForm = ref({ name: '', unit: '', targetValue: '' });
 

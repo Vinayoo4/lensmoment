@@ -26,7 +26,7 @@ export async function createKpi(req: Request, res: Response) {
     value: Number(value),
     isSynced: isSynced !== false,
     workspaceId
-  } as any;
+  };
 
   await appendJson<KPIEntry>('kpis.json', newKpi);
   await runQuantifyEngine(workspaceId || 'w_01');
@@ -85,7 +85,7 @@ export async function runQuantifyEngine(workspaceId: string) {
     }
   };
 
-  const workspaceKpis = kpis.filter(k => (k as any).workspaceId === workspaceId || !k.kpiId);
+  const workspaceKpis = kpis.filter(k => k.workspaceId === workspaceId || !k.kpiId);
 
   const kpisByDef = workspaceKpis.reduce((acc, kpi) => {
     if (!acc[kpi.kpiId]) acc[kpi.kpiId] = [];
@@ -109,12 +109,12 @@ export async function runQuantifyEngine(workspaceId: string) {
       }
     }
 
-    const def: any = kpiDefs.find(d => d.id === kpiId);
+    const def = kpiDefs.find(d => d.id === kpiId);
 
     // Rule: KPI value below target by 20%+
-    if (def && def.targetValue && sorted.length > 0) {
+    if (def && (def as KPIDefinition & { targetValue?: number }).targetValue && sorted.length > 0) {
       const latest = sorted[sorted.length - 1];
-      if (latest.value < (def.targetValue * 0.8)) {
+      if (latest.value < ((def as KPIDefinition & { targetValue?: number }).targetValue! * 0.8)) {
         addSuggestion('below_target', kpiId, `Alert: ${def.name} is below target by 20% or more.`);
       }
     } else if (def && def.id === 'k_revenue' && sorted.length > 0) {

@@ -21,12 +21,21 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue';
 
+interface BeforeInstallPromptEvent extends Event {
+  readonly platforms: string[];
+  readonly userChoice: Promise<{
+    outcome: 'accepted' | 'dismissed';
+    platform: string;
+  }>;
+  prompt(): Promise<void>;
+}
+
 const showPrompt = ref(false);
-let deferredPrompt: any = null;
+let deferredPrompt: BeforeInstallPromptEvent | null = null;
 
 const handleBeforeInstallPrompt = (e: Event) => {
   e.preventDefault();
-  deferredPrompt = e;
+  deferredPrompt = e as BeforeInstallPromptEvent;
   showPrompt.value = true;
 };
 
