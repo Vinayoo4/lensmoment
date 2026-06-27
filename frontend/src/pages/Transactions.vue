@@ -106,10 +106,11 @@ import { ref, onMounted, computed } from 'vue';
 import { useAppStore } from '../stores/app';
 import { API_BASE_URL } from '../config';
 import AppSidebar from '../components/layout/AppSidebar.vue';
+import type { Transaction } from '../../../shared/types/index';
 
 const appStore = useAppStore();
 
-const transactions = ref<any[]>([]);
+const transactions = ref<Transaction[]>([]);
 const search = ref('');
 const filterStatus = ref('all');
 
@@ -154,8 +155,9 @@ const unreconciledCount = computed(() => unreconciledTx.value.length);
 
 const addTransaction = async () => {
   const wsId = appStore.user?.workspaceId === 'w_all' ? 'w_01' : appStore.user?.workspaceId;
-  const payload = {
-    workspaceId: wsId,
+  const payload: Transaction = {
+    id: 'temp_' + Date.now(),
+    workspaceId: wsId || 'w_01',
     date: form.value.date,
     amount: Number(form.value.amount),
     description: form.value.description,
@@ -163,7 +165,7 @@ const addTransaction = async () => {
   };
 
   if (!appStore.isOnline) {
-    transactions.value.unshift({ ...payload, id: 'temp_' + Date.now() });
+    transactions.value.unshift(payload);
     await appStore.addToOfflineQueue({ type: 'CREATE_TRANSACTION', payload });
   } else {
     try {
@@ -212,12 +214,12 @@ const importBulk = async () => {
   }
 };
 
-const toggleStatus = async (id: string, newStatus: string) => {
+const toggleStatus = async (id: string, newStatus: 'reconciled' | 'unreconciled') => {
   const tx = transactions.value.find(t => t.id === id);
   if (tx) tx.status = newStatus;
 
   if (!appStore.isOnline) {
-    await appStore.addToOfflineQueue({ type: 'RECONCILE_TRANSACTION', payload: { id } });
+    await appStore.addToOfflineQueue({ type: 'RECONCILE_TRANSACTION', payload: { id } as unknown as Transaction });
   } else {
     try {
       await fetch(`${API_BASE_URL}/api/transactions/${id}/status`, {

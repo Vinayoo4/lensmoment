@@ -27,7 +27,7 @@ export async function getWorkspaceStats(req: Request, res: Response) {
   const suggestions = await readJson<AISuggestion[]>('suggestions.json', []);
 
   res.json({
-    kpiCount: kpis.filter((k: any) => k.workspaceId === id).length,
+    kpiCount: kpis.filter(k => k.workspaceId === id).length,
     transactionCount: transactions.filter(t => t.workspaceId === id).length,
     suggestionCount: suggestions.filter(s => s.workspaceId === id).length
   });

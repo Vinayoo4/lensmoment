@@ -1,17 +1,18 @@
 import type { Request, Response } from 'express';
 import { v4 as uuidv4 } from 'uuid';
 import { readJson, writeJson } from '../storage/index.js';
+import type { Report } from '../../../shared/types/index.js';
 
 export async function getReports(req: Request, res: Response) {
   const { workspaceId } = req.query;
-  const reports = await readJson<any[]>('reports.json', []);
+  const reports = await readJson<Report[]>('reports.json', []);
   res.json(workspaceId ? reports.filter(r => r.workspaceId === workspaceId) : reports);
 }
 
 export async function createReport(req: Request, res: Response) {
   const { workspaceId, title, content } = req.body;
-  const reports = await readJson<any[]>('reports.json', []);
-  const newReport = {
+  const reports = await readJson<Report[]>('reports.json', []);
+  const newReport: Report = {
     id: uuidv4(),
     workspaceId,
     title,

@@ -3,6 +3,12 @@ import jwt from 'jsonwebtoken';
 
 const JWT_SECRET = process.env.JWT_SECRET || 'your_super_secret_jwt_key';
 
+import type { User } from '../../../shared/types/index.js';
+
+export interface AuthRequest extends Request {
+  user?: User;
+}
+
 export function authenticateJWT(req: Request, res: Response, next: NextFunction) {
   const authHeader = req.headers.authorization;
 
@@ -13,7 +19,7 @@ export function authenticateJWT(req: Request, res: Response, next: NextFunction)
       if (err) {
         return res.sendStatus(403);
       }
-      (req as any).user = user;
+      (req as AuthRequest).user = user as User;
       next();
     });
   } else {
@@ -23,7 +29,7 @@ export function authenticateJWT(req: Request, res: Response, next: NextFunction)
 
 export function requireRole(roles: string[]) {
   return (req: Request, res: Response, next: NextFunction) => {
-    const user = (req as any).user;
+    const user = (req as AuthRequest).user;
     if (!user) return res.sendStatus(401);
     if (!roles.includes(user.role)) return res.sendStatus(403);
     next();

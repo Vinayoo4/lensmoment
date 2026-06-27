@@ -1,0 +1,32 @@
+[
+  {
+    "id": "k_traffic",
+    "workspaceId": "w_01",
+    "name": "Daily Foot Traffic",
+    "unit": "count"
+  },
+  {
+    "id": "k_revenue",
+    "workspaceId": "w_01",
+    "name": "Daily Revenue",
+    "unit": "INR"
+  },
+  {
+    "id": "k_atv",
+    "workspaceId": "w_01",
+    "name": "Average Transaction Value",
+    "unit": "INR"
+  },
+  {
+    "id": "k_retention",
+    "workspaceId": "w_01",
+    "name": "Customer Return Rate",
+    "unit": "%"
+  },
+  {
+    "id": "k_inventory",
+    "workspaceId": "w_01",
+    "name": "Inventory Turnover",
+    "unit": "count"
+  }
+]

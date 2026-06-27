@@ -2,8 +2,9 @@ import { defineStore } from 'pinia';
 import localforage from 'localforage';
 import { v4 as uuidv4 } from 'uuid';
 import { API_BASE_URL } from '../config';
+import type { User, OfflineAction } from '../../../shared/types/index';
 
-async function generatePayloadHash(payload: any) {
+async function generatePayloadHash(payload: unknown) {
   const msgUint8 = new TextEncoder().encode(JSON.stringify(payload));
   const hashBuffer = await crypto.subtle.digest('SHA-256', msgUint8);
   const hashArray = Array.from(new Uint8Array(hashBuffer));
@@ -13,12 +14,12 @@ async function generatePayloadHash(payload: any) {
 export const useAppStore = defineStore('app', {
   state: () => ({
     isOnline: navigator.onLine,
-    offlineQueue: [] as any[],
-    user: null as any | null,
+    offlineQueue: [] as OfflineAction[],
+    user: null as User & { token?: string } | null,
     isSyncing: false
   }),
   actions: {
-    setUser(user: any) {
+    setUser(user: User & { token?: string } | null) {
       this.user = user;
       if (user) {
         localStorage.setItem('auth_user', JSON.stringify(user));
@@ -42,7 +43,7 @@ export const useAppStore = defineStore('app', {
         this.processOfflineQueue();
       }
     },
-    async addToOfflineQueue(action: any) {
+    async addToOfflineQueue(action: Omit<OfflineAction, 'queueId' | 'timestamp' | 'retryCount' | 'payloadHash'>) {
       const payloadHash = await generatePayloadHash(action.payload);
 
       // Duplicate prevention
@@ -51,7 +52,7 @@ export const useAppStore = defineStore('app', {
         return;
       }
 
-      const actionWithId = {
+      const actionWithId: OfflineAction = {
         ...action,
         queueId: uuidv4(),
         timestamp: Date.now(),
@@ -70,18 +71,18 @@ export const useAppStore = defineStore('app', {
       if (this.isSyncing) return;
       this.isSyncing = true;
 
-      const queue = await localforage.getItem<any[]>('offlineQueue') || [];
+      const queue = await localforage.getItem<OfflineAction[]>('offlineQueue') || [];
       if (queue.length === 0) {
         this.isSyncing = false;
         return;
       }
 
-      const failedQueue = await localforage.getItem<any[]>('failed_queue') || [];
+      const failedQueue = await localforage.getItem<OfflineAction[]>('failed_queue') || [];
       const remainingQueue = [];
 
       for (const action of queue) {
         try {
-          if (action.type === 'CREATE_KPI') {
+          if (action.type === 'CREATE_KPI' && 'kpiId' in action.payload) {
             await fetch(`${API_BASE_URL}/api/kpis/${action.payload.kpiId}/entries`, {
               method: 'POST',
               headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${this.user?.token}` },
@@ -93,7 +94,7 @@ export const useAppStore = defineStore('app', {
               headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${this.user?.token}` },
               body: JSON.stringify(action.payload)
             });
-          } else if (action.type === 'RECONCILE_TRANSACTION') {
+          } else if (action.type === 'RECONCILE_TRANSACTION' && 'id' in action.payload) {
             await fetch(`${API_BASE_URL}/api/transactions/${action.payload.id}`, {
               method: 'PATCH',
               headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${this.user?.token}` },
@@ -128,8 +129,16 @@ export const useAppStore = defineStore('app', {
       this.isSyncing = false;
     },
     async loadQueue() {
-      const queue = await localforage.getItem<any[]>('offlineQueue') || [];
+      const queue = await localforage.getItem<OfflineAction[]>('offlineQueue') || [];
       this.offlineQueue = queue.sort((a, b) => a.timestamp - b.timestamp);
+    },
+    initNetworkListeners() {
+      window.addEventListener('online', () => {
+        this.setOnlineStatus(true);
+      });
+      window.addEventListener('offline', () => {
+        this.setOnlineStatus(false);
+      });
     }
   }
 });

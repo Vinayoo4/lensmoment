@@ -4,7 +4,7 @@ export interface Workspace {
   firmId?: string;
 }
 
-export type Role = 'Workspace Admin' | 'Financial Manager' | 'Operations Staff' | 'Client Portal User';
+export type Role = 'Workspace Admin' | 'Financial Manager' | 'Operations Staff' | 'Client Portal User' | 'superadmin';
 
 export interface User {
   id: string;
@@ -23,6 +23,7 @@ export interface KPIDefinition {
 export interface KPIEntry {
   id: string;
   kpiId: string;
+  workspaceId?: string;
   date: string;
   value: number;
   isSynced: boolean;
@@ -59,5 +60,23 @@ export interface AuditLog {
   timestamp: string;
   userId: string;
   action: string;
-  details?: any;
+  details?: Record<string, unknown>;
+}
+
+export interface OfflineAction {
+  queueId: string;
+  type: string;
+  payload: Record<string, unknown> | KPIEntry | Transaction | ReconciliationState;
+  timestamp: number;
+  retryCount: number;
+  payloadHash: string;
+  error?: string;
+}
+
+export interface Report {
+  id: string;
+  workspaceId: string;
+  title: string;
+  content: string;
+  createdAt: string;
 }
