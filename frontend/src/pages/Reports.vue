@@ -104,7 +104,7 @@ const loadReports = async () => {
       reports.value.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
     }
   } catch (e) {
-    console.warn("Offline");
+    // Expected in offline mode
   } finally {
     loading.value = false;
   }

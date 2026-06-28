@@ -48,7 +48,6 @@ export const useAppStore = defineStore('app', {
 
       // Duplicate prevention
       if (this.offlineQueue.some(item => item.type === action.type && item.payloadHash === payloadHash)) {
-        console.log('Skipping duplicate offline action');
         return;
       }
 
@@ -108,11 +107,9 @@ export const useAppStore = defineStore('app', {
             });
           }
         } catch (e) {
-          console.error('Failed to sync action', action, e);
           action.retryCount = (action.retryCount || 0) + 1;
 
           if (action.retryCount >= 3) {
-             console.error('Action permanently failed, moving to failed_queue', action);
              failedQueue.push({ ...action, error: String(e) });
              // notify user visually (e.g. via toast) - left out for brevity
           } else {
@@ -131,6 +128,27 @@ export const useAppStore = defineStore('app', {
     async loadQueue() {
       const queue = await localforage.getItem<OfflineAction[]>('offlineQueue') || [];
       this.offlineQueue = queue.sort((a, b) => a.timestamp - b.timestamp);
+    },
+    async loadFailedQueue() {
+      return await localforage.getItem<OfflineAction[]>('failed_queue') || [];
+    },
+    async clearFailedQueue() {
+      await localforage.removeItem('failed_queue');
+    },
+    async retryFailedQueue() {
+      const failed = await this.loadFailedQueue();
+      await this.clearFailedQueue();
+
+      // Reset retry counts and re-add to main queue
+      for (const action of failed) {
+        action.retryCount = 0;
+        delete action.error;
+        await this.addToOfflineQueue(action);
+      }
+
+      if (this.isOnline) {
+        this.processOfflineQueue();
+      }
     },
     initNetworkListeners() {
       window.addEventListener('online', () => {

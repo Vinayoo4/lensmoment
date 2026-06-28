@@ -5,9 +5,15 @@
       <div class="flex items-center mt-2 space-x-2">
         <span class="w-3 h-3 rounded-full" :class="appStore.isOnline ? 'bg-green-500' : 'bg-red-500'"></span>
         <span class="text-sm text-gray-400">{{ appStore.isOnline ? 'Online' : 'Offline' }}</span>
-        <span v-if="appStore.offlineQueue.length" class="bg-red-500 text-white text-xs px-1.5 py-0.5 rounded-full ml-auto">
+        <span v-if="appStore.offlineQueue.length" class="bg-orange-500 text-white text-xs px-1.5 py-0.5 rounded-full ml-auto" title="Pending Actions">
           {{ appStore.offlineQueue.length }}
         </span>
+        <span v-if="failedCount > 0" @click="retryFailed" class="bg-red-600 text-white text-xs px-1.5 py-0.5 rounded-full ml-1 cursor-pointer hover:bg-red-500" title="Click to retry failed actions">
+          {{ failedCount }} Failed
+        </span>
+        <button v-if="failedCount > 0" @click="discardFailed" class="text-xs text-red-400 hover:text-red-300 ml-2" title="Discard failed actions">
+          <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg>
+        </button>
       </div>
     </div>
 
@@ -78,6 +84,35 @@ const canManage = computed(() => {
 
 const isAdmin = computed(() => {
   return appStore.user?.role === 'superadmin';
+});
+
+import { ref, onMounted } from 'vue';
+
+const failedCount = ref(0);
+
+const loadFailedCount = async () => {
+  const failed = await appStore.loadFailedQueue();
+  failedCount.value = failed.length;
+};
+
+const retryFailed = async () => {
+  if (!appStore.isOnline) {
+    alert('You must be online to retry failed actions.');
+    return;
+  }
+  await appStore.retryFailedQueue();
+  loadFailedCount();
+};
+
+const discardFailed = async () => {
+  if (confirm('Are you sure you want to discard all permanently failed actions?')) {
+    await appStore.clearFailedQueue();
+    loadFailedCount();
+  }
+};
+
+onMounted(() => {
+  loadFailedCount();
 });
 
 const logout = () => {

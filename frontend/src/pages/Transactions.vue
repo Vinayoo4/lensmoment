@@ -132,7 +132,7 @@ const loadTransactions = async () => {
       transactions.value.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
     }
   } catch (e) {
-    console.warn("Offline or failed to load");
+    // Expected in offline mode
   }
 };
 

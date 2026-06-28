@@ -234,7 +234,7 @@ const updateSuggestion = async (id: string, status: string) => {
         body: JSON.stringify({ status })
       });
     } catch(e) {
-      console.error(e);
+      // Expected in offline mode
     }
   }
 };
