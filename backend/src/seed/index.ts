@@ -5,11 +5,8 @@ import type { Workspace, User, KPIDefinition, KPIEntry, Transaction, Reconciliat
 export async function runSeed() {
   const isSeeded = await readJson<{ seeded: boolean }>('meta.json', { seeded: false });
   if (isSeeded.seeded) {
-    console.log('Database already seeded, skipping...');
     return;
   }
-
-  console.log('Seeding database...');
 
   // 1. Workspaces
   const workspaces: Workspace[] = [
@@ -107,5 +104,4 @@ export async function runSeed() {
 
   // Mark seeded
   await writeJson('meta.json', { seeded: true });
-  console.log('Seeding complete.');
 }

@@ -1,1 +1,21 @@
-{"projectId":"quantify-ai","projectName":"Quantify AI","functions":[],"databases":[]}
+{
+  "projectId": "quantify-ai",
+  "projectName": "Quantify AI",
+  "functions": [],
+  "databases": [],
+  "sites": [
+    {
+      "name": "Quantify AI Frontend",
+      "path": "frontend",
+      "build": "npm install && npm run build",
+      "output": "dist",
+      "serve": "serve -s dist -p 3000",
+      "env": {
+        "VITE_API_BASE_URL": {
+          "type": "string",
+          "description": "Base URL for the backend API"
+        }
+      }
+    }
+  ]
+}

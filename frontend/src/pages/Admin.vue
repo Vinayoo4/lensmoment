@@ -88,7 +88,7 @@ const loadAdminData = async () => {
      if(reps.ok) db.value.Reports = await reps.json();
      if(aud.ok) db.value['Audit Log'] = await aud.json();
   } catch(e) {
-     console.error('Failed to load admin data');
+     // Expected in offline mode
   }
 };
 

@@ -42,12 +42,7 @@ const handleBeforeInstallPrompt = (e: Event) => {
 const install = async () => {
   if (!deferredPrompt) return;
   deferredPrompt.prompt();
-  const { outcome } = await deferredPrompt.userChoice;
-  if (outcome === 'accepted') {
-    console.log('User accepted the install prompt');
-  } else {
-    console.log('User dismissed the install prompt');
-  }
+  await deferredPrompt.userChoice;
   deferredPrompt = null;
   showPrompt.value = false;
 };

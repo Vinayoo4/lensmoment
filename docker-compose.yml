@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  quantify-ai:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080" # Frontend
+      - "3000:3000" # Backend API
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+      - JWT_SECRET=change_me_in_production
+      - VITE_API_BASE_URL=http://localhost:3000
+    volumes:
+      - ./data:/app/data # Mount persistent local-first DB
+    working_dir: /app/backend

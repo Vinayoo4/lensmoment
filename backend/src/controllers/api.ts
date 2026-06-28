@@ -1,24 +1,37 @@
 import type { Request, Response } from 'express';
 import { v4 as uuidv4 } from 'uuid';
 import { readJson, writeJson, appendJson, updateJson } from '../storage/index.js';
-import type { KPIEntry, Transaction, AISuggestion, Workspace, KPIDefinition } from '../../../shared/types/index.js';
+import type { KPIEntry, Transaction, AISuggestion, Workspace, KPIDefinition, User } from '../../../shared/types/index.js';
+import type { AuthRequest } from '../middleware/auth.js';
 
 export async function getDashboardData(req: Request, res: Response) {
-  const workspaceId = req.query.workspaceId as string || 'w_01';
+  const user = (req as AuthRequest).user as User;
+  let workspaceId = req.query.workspaceId as string || 'w_01';
+
+  if (user.role !== 'superadmin' && user.workspaceId !== 'w_all' && user.workspaceId !== workspaceId) {
+    workspaceId = user.workspaceId;
+  }
 
   const kpis = await readJson<KPIEntry[]>('kpis.json', []);
   const transactions = await readJson<Transaction[]>('transactions.json', []);
   const suggestions = await readJson<AISuggestion[]>('suggestions.json', []);
 
   res.json({
-    kpis: kpis,
-    transactions: transactions,
+    kpis: kpis.filter(k => k.workspaceId === workspaceId),
+    transactions: transactions.filter(t => t.workspaceId === workspaceId),
     suggestions: suggestions.filter(s => s.workspaceId === workspaceId && s.status === 'todo'),
   });
 }
 
 export async function createKpi(req: Request, res: Response) {
-  const { kpiId, date, value, isSynced, workspaceId } = req.body;
+  const user = (req as AuthRequest).user as User;
+  const { kpiId, date, value, isSynced } = req.body;
+  let { workspaceId } = req.body;
+
+  if (user.role !== 'superadmin' && user.workspaceId !== 'w_all') {
+    workspaceId = user.workspaceId;
+  }
+
   const newKpi: KPIEntry = {
     id: uuidv4(),
     kpiId,
@@ -29,13 +42,20 @@ export async function createKpi(req: Request, res: Response) {
   };
 
   await appendJson<KPIEntry>('kpis.json', newKpi);
-  await runQuantifyEngine(workspaceId || 'w_01');
+  await runQuantifyEngine(newKpi.workspaceId || 'w_01');
 
   res.status(201).json(newKpi);
 }
 
 export async function createTransaction(req: Request, res: Response) {
-  const { workspaceId, date, amount, description, status } = req.body;
+  const user = (req as AuthRequest).user as User;
+  const { date, amount, description, status } = req.body;
+  let { workspaceId } = req.body;
+
+  if (user.role !== 'superadmin' && user.workspaceId !== 'w_all') {
+    workspaceId = user.workspaceId;
+  }
+
   const newTransaction: Transaction = {
     id: uuidv4(),
     workspaceId: workspaceId || 'w_01',
@@ -46,19 +66,26 @@ export async function createTransaction(req: Request, res: Response) {
   };
 
   await appendJson<Transaction>('transactions.json', newTransaction);
-  await runQuantifyEngine(workspaceId || 'w_01');
+  await runQuantifyEngine(newTransaction.workspaceId || 'w_01');
 
   res.status(201).json(newTransaction);
 }
 
 export async function updateTransactionStatus(req: Request, res: Response) {
+  const user = (req as AuthRequest).user as User;
   const { id } = req.params;
   const { status } = req.body;
-  await updateJson<Transaction>('transactions.json', id as string, { status });
 
   const transactions = await readJson<Transaction[]>('transactions.json', []);
   const tx = transactions.find(t => t.id === id);
-  await runQuantifyEngine(tx?.workspaceId || 'w_01');
+
+  if (!tx) return res.status(404).json({ error: 'Transaction not found' });
+  if (user.role !== 'superadmin' && user.workspaceId !== 'w_all' && tx.workspaceId !== user.workspaceId) {
+    return res.status(403).json({ error: 'Forbidden' });
+  }
+
+  await updateJson<Transaction>('transactions.json', id as string, { status });
+  await runQuantifyEngine(tx.workspaceId || 'w_01');
 
   res.json({ success: true });
 }

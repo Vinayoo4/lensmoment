@@ -9,14 +9,15 @@ export async function getWorkspaces(req: Request, res: Response) {
   res.json(workspaces);
 }
 
+import { appendJson } from '../storage/index.js';
+
 export async function createWorkspace(req: Request, res: Response) {
   const { name } = req.body;
   if (!name) return res.status(400).json({ error: 'Name required' });
 
-  const workspaces = await readJson<Workspace[]>('workspaces.json', []);
   const newWorkspace: Workspace = { id: `w_${uuidv4().slice(0, 8)}`, name };
 
-  await writeJson('workspaces.json', [...workspaces, newWorkspace]);
+  await appendJson('workspaces.json', newWorkspace);
   res.status(201).json(newWorkspace);
 }
 

@@ -112,7 +112,7 @@ const loadData = async () => {
     // Sort history
     history.value.sort((a, b) => b.month.localeCompare(a.month));
   } catch (e) {
-    console.warn("Offline");
+    // Expected in offline mode
   } finally {
     loading.value = false;
   }

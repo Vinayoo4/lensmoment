@@ -8,6 +8,7 @@ import { getReconciliations, createOrUpdateReconciliation } from '../controllers
 import { getReports, createReport } from '../controllers/reports.js';
 import { getAuditLogs } from '../controllers/audit.js';
 import { getSuggestions, updateSuggestion } from '../controllers/suggestions.js';
+import { requireRole } from '../middleware/auth.js';
 
 const router = Router();
 
@@ -17,9 +18,9 @@ router.use(authenticateJWT);
 router.get('/dashboard', getDashboardData);
 
 // Workspaces
-router.get('/workspaces', getWorkspaces);
-router.post('/workspaces', createWorkspace);
-router.get('/workspaces/:id/stats', getWorkspaceStats);
+router.get('/workspaces', requireRole(['superadmin']), getWorkspaces);
+router.post('/workspaces', requireRole(['superadmin']), createWorkspace);
+router.get('/workspaces/:id/stats', requireRole(['superadmin']), getWorkspaceStats);
 
 // KPIs
 router.get('/kpis', getKpis);
@@ -50,6 +51,6 @@ router.get('/suggestions', getSuggestions);
 router.patch('/suggestions/:id', updateSuggestion);
 
 // Audit Logs
-router.get('/audit', getAuditLogs);
+router.get('/audit', requireRole(['superadmin']), getAuditLogs);
 
 export default router;

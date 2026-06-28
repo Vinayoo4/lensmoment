@@ -134,7 +134,7 @@ const loadDefs = async () => {
     const res = await fetch(`${API_BASE_URL}/api/kpis?workspaceId=${wsId}`, { headers: getHeaders() });
     if (res.ok) kpiDefs.value = await res.json();
   } catch (e) {
-    console.error('Failed to load KPIs offline');
+    // Expected in offline mode
   }
 };
 

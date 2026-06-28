@@ -42,6 +42,9 @@ app.get('/health', (req, res) => {
 
 runSeed().then(() => {
   app.listen(port, () => {
-    console.log(`Server running on port ${port}`);
+    // Keep port log for infra purposes, but generally production hardening wants minimal logs
+    if (process.env.NODE_ENV !== 'production') {
+      console.log(`Server running on port ${port}`);
+    }
   });
 });

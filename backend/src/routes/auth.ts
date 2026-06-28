@@ -7,6 +7,8 @@ import { hashPassword, verifyPassword } from '../auth/crypto.js';
 import type { User } from '../../../shared/types/index.js';
 
 const router = Router();
+
+// In production, JWT_SECRET must be set (enforced in server.ts)
 const JWT_SECRET = process.env.JWT_SECRET || 'your_super_secret_jwt_key';
 
 const authLimiter = rateLimit({
