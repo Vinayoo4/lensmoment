@@ -1,7 +1,7 @@
 import type { Request, Response } from 'express';
 import { v4 as uuidv4 } from 'uuid';
 import { readJson, writeJson, appendJson, updateJson } from '../storage/index.js';
-import type { KPIEntry, Transaction, AISuggestion, Workspace, KPIDefinition, User } from '../../../shared/types/index.js';
+import type { KPIEntry, Transaction, AISuggestion, KPIDefinition, User } from '../../../shared/types/index.js';
 import type { AuthRequest } from '../middleware/auth.js';
 
 export async function getDashboardData(req: Request, res: Response) {
@@ -98,9 +98,17 @@ export async function runQuantifyEngine(workspaceId: string) {
 
   const newSuggestions: AISuggestion[] = [];
 
+  const existingSet = new Set(
+    existingSuggestions
+      .filter(s => s.workspaceId === workspaceId && s.status !== 'dismissed')
+      .map(s => `${s.type}:${s.trigger}`)
+  );
+  const newSet = new Set<string>();
+
   const addSuggestion = (type: string, trigger: string, text: string) => {
-    const isDuplicate = existingSuggestions.some(s => s.workspaceId === workspaceId && s.type === type && s.trigger === trigger && s.status !== 'dismissed');
-    if (!isDuplicate && !newSuggestions.some(s => s.type === type && s.trigger === trigger)) {
+    const key = `${type}:${trigger}`;
+    if (!existingSet.has(key) && !newSet.has(key)) {
+      newSet.add(key);
       newSuggestions.push({
         id: uuidv4(),
         workspaceId,
@@ -123,20 +131,20 @@ export async function runQuantifyEngine(workspaceId: string) {
   let currentRevenue = 0;
   let previousRevenue = 0;
 
+  const kpiDefsMap = new Map(kpiDefs.map(d => [d.id, d]));
+
   for (const [kpiId, entries] of Object.entries(kpisByDef)) {
     if (!entries) continue;
     const sorted = [...entries].sort((a, b) => (a.date || '').localeCompare(b.date || ''));
+    const def = kpiDefsMap.get(kpiId);
 
     // Rule: KPI trend down 3+ consecutive days
     if (sorted.length >= 4) {
       const last4 = sorted.slice(-4);
       if (last4[0].value > last4[1].value && last4[1].value > last4[2].value && last4[2].value > last4[3].value) {
-        const def = kpiDefs.find(d => d.id === kpiId);
         addSuggestion('trend_down', kpiId, `Alert: Declining trend in ${def?.name || kpiId} over 3+ days.`);
       }
     }
-
-    const def = kpiDefs.find(d => d.id === kpiId);
 
     // Rule: KPI value below target by 20%+
     if (def && (def as KPIDefinition & { targetValue?: number }).targetValue && sorted.length > 0) {

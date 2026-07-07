@@ -1,5 +1,4 @@
 import type { Request, Response } from 'express';
-import { v4 as uuidv4 } from 'uuid';
 import { readJson, writeJson, updateJson } from '../storage/index.js';
 import type { Transaction, User } from '../../../shared/types/index.js';
 import type { AuthRequest } from '../middleware/auth.js';
@@ -32,7 +31,14 @@ export async function updateTransaction(req: Request, res: Response) {
     return res.status(403).json({ error: 'Forbidden' });
   }
 
-  await updateJson('transactions.json', id, req.body);
+  const { date, amount, description, status } = req.body;
+  const updates: Partial<Transaction> = {};
+  if (date !== undefined) updates.date = date;
+  if (amount !== undefined) updates.amount = Number(amount);
+  if (description !== undefined) updates.description = description;
+  if (status !== undefined) updates.status = status;
+
+  await updateJson('transactions.json', id, updates);
   if (tx.workspaceId) await runQuantifyEngine(tx.workspaceId);
 
   res.json({ success: true });

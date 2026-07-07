@@ -27,6 +27,10 @@ export async function updateSuggestion(req: Request, res: Response) {
     return res.status(403).json({ error: 'Forbidden' });
   }
 
-  await updateJson('suggestions.json', id, req.body);
+  const { status } = req.body;
+  const updates: Partial<AISuggestion> = {};
+  if (status !== undefined) updates.status = status;
+
+  await updateJson('suggestions.json', id, updates);
   res.json({ success: true });
 }
