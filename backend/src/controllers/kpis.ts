@@ -1,6 +1,6 @@
 import type { Request, Response } from 'express';
 import { v4 as uuidv4 } from 'uuid';
-import { readJson, writeJson, updateJson } from '../storage/index.js';
+import { readJson, writeJson, updateJson, appendJson } from '../storage/index.js';
 import type { KPIDefinition, KPIEntry, User } from '../../../shared/types/index.js';
 import type { AuthRequest } from '../middleware/auth.js';
 import { runQuantifyEngine } from './api.js';
@@ -16,8 +16,6 @@ export async function getKpis(req: Request, res: Response) {
   const defs = await readJson<KPIDefinition[]>('kpi_defs.json', []);
   res.json(workspaceId ? defs.filter(d => d.workspaceId === workspaceId) : defs);
 }
-
-import { appendJson } from '../storage/index.js';
 
 export async function createKpiDef(req: Request, res: Response) {
   const user = (req as AuthRequest).user as User;
@@ -44,7 +42,13 @@ export async function updateKpiDef(req: Request, res: Response) {
     return res.status(403).json({ error: 'Forbidden' });
   }
 
-  await updateJson('kpi_defs.json', id, req.body);
+  const { name, unit, targetValue } = req.body;
+  const updates: Partial<KPIDefinition & { targetValue?: number }> = {};
+  if (name !== undefined) updates.name = name;
+  if (unit !== undefined) updates.unit = unit;
+  if (targetValue !== undefined) updates.targetValue = Number(targetValue);
+
+  await updateJson('kpi_defs.json', id, updates);
   res.json({ success: true });
 }
 
