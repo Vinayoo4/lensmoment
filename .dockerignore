@@ -1,7 +1,15 @@
 node_modules
 dist
+dist-ssr
+backend/dist
+frontend/dist
 .env
-data
+backend/.env
+frontend/.env
+data/
+backend/data/
 .vscode
 .idea
 *.log
+playwright-report/
+test-results/

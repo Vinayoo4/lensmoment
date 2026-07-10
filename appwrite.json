@@ -9,7 +9,7 @@
       "path": "frontend",
       "build": "npm install && npm run build",
       "output": "dist",
-      "serve": "serve -s dist -p 3000",
+      "serve": "serve -s dist -p 8080",
       "env": {
         "VITE_API_BASE_URL": {
           "type": "string",

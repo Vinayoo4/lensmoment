@@ -1,5 +1,5 @@
 import { describe, it, expect, vi } from 'vitest';
-import { authenticateJWT, requireRole } from '../../middleware/auth';
+import { authenticateJWT, requireRole } from '../../middleware/auth.js';
 import jwt from 'jsonwebtoken';
 
 describe('Auth Middleware', () => {
