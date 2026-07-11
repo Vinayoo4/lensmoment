@@ -1,27 +1,16 @@
 {
-  "name": "saltedhash-pwa",
+  "name": "quantify-ai",
   "version": "1.0.0",
-  "description": "",
-  "main": "eslint.config.js",
-  "directories": {
-    "doc": "docs",
-    "test": "tests"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Vinayoo4/lensmoment.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "description": "Quantify Suite is a unified PWA business intelligence platform combining KPI tracking and accounting.",
+  "private": true,
   "type": "module",
-  "bugs": {
-    "url": "https://github.com/Vinayoo4/lensmoment/issues"
+  "scripts": {
+    "install:all": "npm install && cd frontend && npm install && cd ../backend && npm install",
+    "build:all": "cd frontend && npm run build && cd ../backend && npm run build",
+    "test:backend": "cd backend && npm run test",
+    "test:e2e": "npx playwright test",
+    "test:all": "npm run test:backend && npm run test:e2e"
   },
-  "homepage": "https://github.com/Vinayoo4/lensmoment#readme",
   "devDependencies": {
     "@playwright/test": "^1.60.0"
   }

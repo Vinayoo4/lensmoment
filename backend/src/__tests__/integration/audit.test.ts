@@ -1,6 +1,6 @@
 import { describe, it, expect, vi } from 'vitest';
-import { getAuditLogs } from '../../controllers/audit';
-import * as storage from '../../storage/index';
+import { getAuditLogs } from '../../controllers/audit.js';
+import * as storage from '../../storage/index.js';
 
 describe('Audit Controller', () => {
   it('should return audit logs', async () => {

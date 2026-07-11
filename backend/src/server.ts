@@ -18,27 +18,38 @@ const port = process.env.PORT || 3000;
 
 const allowedOrigins = process.env.ALLOWED_ORIGINS
   ? process.env.ALLOWED_ORIGINS.split(',')
-  : ['http://localhost:5173', 'http://localhost:4173'];
+  : ['http://localhost:5173', 'http://localhost:4173', 'http://localhost:8080'];
 
+// Only allow no-origin requests to /health
+app.get('/health', cors({
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error(`Not allowed by CORS: ${origin}`));
+    }
+  }
+}), (req, res) => {
+  res.json({ status: 'ok' });
+});
+
+// Strictly enforce origin matching for all other routes
 app.use(cors({
   origin: function (origin, callback) {
     if (origin && allowedOrigins.includes(origin)) {
       callback(null, true);
     } else {
-      callback(new Error('Not allowed by CORS'));
+      callback(new Error(`Not allowed by CORS: ${origin}`));
     }
   },
   credentials: true,
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
+
 app.use(express.json());
 
 app.use('/api/auth', authRoutes);
 app.use('/api', apiRoutes);
-
-app.get('/health', (req, res) => {
-  res.json({ status: 'ok' });
-});
 
 runSeed().then(() => {
   app.listen(port, () => {
