@@ -1,5 +1,6 @@
 import { Router, Response } from 'express';
-import { db, hashPassword } from './db';
+import { hashPassword } from './db';
+import { db } from './db-dynamic';
 import { runQuantifyEngine } from './engine';
 import { authenticateToken, signJWT, AuthenticatedRequest, rateLimiter, requireRole } from './auth';
 import { UserRole } from '../src/shared/types';

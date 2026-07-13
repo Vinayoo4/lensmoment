@@ -1,6 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 import crypto from 'crypto';
-import { db, hashPassword } from './db';
+import { hashPassword } from './db';
+import { db } from './db-dynamic';
 import { UserRole } from '../src/shared/types';
 
 const JWT_SECRET = process.env.JWT_SECRET || 'quantify_development_secret_key_9988_xyz';

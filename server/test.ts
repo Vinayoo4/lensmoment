@@ -1,11 +1,19 @@
 import assert from 'assert';
 import crypto from 'crypto';
-import { db, hashPassword, readDB, writeDB } from './db';
+import { hashPassword, readDB, writeDB } from './db';
+import { db } from './db-dynamic';
 import { runQuantifyEngine } from './engine';
 import { signJWT, verifyJWT } from './auth';
 
 async function runTests() {
   console.log('--- STARTING QUANTIFY AI BACKEND TESTS ---');
+
+  // We enforce using the local Db for tests, since Appwrite might not be provisioned
+  const { isAppwriteEnabled } = await import('./appwrite');
+  if (isAppwriteEnabled) {
+    console.warn("WARN: isAppwriteEnabled is true but we are skipping tests that require active Appwrite. Tests will only run correctly without Appwrite connection vars.");
+    return;
+  }
 
   // Back up current DB
   let dbBackup: any = null;

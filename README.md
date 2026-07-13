@@ -29,106 +29,47 @@ The database engine is automatically pre-seeded with these accounts for immediat
 
 ---
 
-## 🛠️ Architecture & Core Components
+## Deployment: Vercel + Appwrite
 
-```
-                +---------------------------------------------------+
-                |                     FRONTEND                      |
-                |   Vite + React (App.tsx) Styled with Tailwind     |
-                +-------------------------+-------------------------+
-                                          |
-                        [Axios/Fetch REST Requests]
-                                          |
-                +-------------------------v-------------------------+
-                |                     BACKEND                       |
-                |               Express Server (Node)               |
-                +-------------------------+-------------------------+
-                                          |
-                  [AsyncLock Transaction Queue & DB Operations]
-                                          |
-                +-------------------------v-------------------------+
-                |                    DATABASE                       |
-                |             data.json (Atomic File Writes)        |
-                +---------------------------------------------------+
-```
+This repository has been fully architected to deploy to **Vercel** serverless environments, with an **Appwrite** backend.
 
-### 1. Unified Backend Process (`server.ts` & `server/routes.ts`)
-A lightweight, fast, and secure API engine using Express, JWT-based state-less authentication, and rate-limiting. It mounts Vite in development to support live client editing while serving static bundles in production.
+### 1. Appwrite Database Setup
+1. Create a project in Appwrite Cloud or your self-hosted instance.
+2. Go to **API Keys** and generate a new key. Grant it all `databases.*` scopes (read, write).
+3. Set your environment variables in `.env` based on `.env.example`:
+   * `APPWRITE_ENDPOINT` (e.g., `https://cloud.appwrite.io/v1`)
+   * `APPWRITE_PROJECT_ID`
+   * `APPWRITE_API_KEY`
+   * `APPWRITE_DATABASE_ID` (e.g., `quantify_db`)
+4. Start the application locally or deploy it.
+5. **Auto-Seeding**: The application will automatically create the required Appwrite database, collections, attributes, and demo accounts on the first request if they do not exist.
 
-### 2. Concurrency-Safe Storage Engine (`server/db.ts`)
-To support reliable database state mutations without a massive SQL instance, the backend uses a JSON-based file database backed by custom-built **AsyncLock** queueing. All database write operations (`writeDatabase()`) are queued serially per tenant key, completely eliminating write conflicts and filesystem corruption.
-
-### 3. Operational Rule Engine (`server/engine.ts`)
-Compiles KPI records and evaluates multi-point trends:
-* **Monthly Revenue Drops**: Triggers an alert if monthly sales revenue declines by more than 10%.
-* **Cost of Acquisition Check**: Flags warning if Customer Acquisition Cost (CAC) rises above target.
-* **Customer Retention Rate**: Warns if user retention slides under 80%.
-* **Discrepancy Audit**: Analyzes ledger reconciliation states to flag unresolved backlogs.
-
----
-
-## 📡 Offline Resilience & Replay Protocol
-
-When internet connections drop, the client's synchronizer takes over seamlessly:
-1. **Optimistic UI Postings**: Transactions and KPI logs are registered in memory with a temporary `optimistic_` ID to keep the UI active.
-2. **Duplicate Prevention**: A SHA-like string hash is calculated based on payload contents (`description + amount + date`). If the same transaction is logged twice in offline state, the queue merges them to avoid duplicate ledger postings.
-3. **Manual Sync Manager**: Users can track pending packets, review specific network rejection messages, retry individual packet dispatches, or clear failed synchronization queues directly from the main dashboard console.
+### 2. Vercel Deployment
+The repository includes a `vercel.json` and a serverless entry point in `api/index.ts`.
+To deploy:
+1. Connect your GitHub repository to Vercel.
+2. In the Vercel dashboard, configure the following **Environment Variables**:
+   * `JWT_SECRET` (Required)
+   * `APPWRITE_ENDPOINT`
+   * `APPWRITE_PROJECT_ID`
+   * `APPWRITE_API_KEY`
+   * `APPWRITE_DATABASE_ID`
+   * `ALLOWED_ORIGINS` (e.g., `https://your-deployment-url.vercel.app`)
+   * `VITE_API_BASE_URL` (Set this to `/api`)
+3. Deploy! Vercel will build the frontend and correctly route `/api/*` requests to the serverless functions.
 
 ---
 
 ## ⚙️ Local Development Setup
 
 ### Prerequisites
-* Node.js v18 or later
-* npm v9 or later
+* Node.js v20+
+* npm
 
 ### Installation
-1. Install base dependencies:
-   ```bash
-   npm install
-   ```
+1. Install base dependencies: `npm install`
+2. Establish local environment configuration: `cp .env.example .env`
+3. Spin up the unified full-stack dev server: start the dev script.
 
-2. Establish local environment configuration:
-   ```bash
-   cp .env.example .env
-   ```
+*(If Appwrite environment variables are missing, the system gracefully falls back to local file-based `data.json` storage for quick testing, but Appwrite is required for Vercel deployment).*
 
-3. Spin up the unified full-stack dev server:
-   ```bash
-   npm run dev
-   ```
-   Open [http://localhost:3000](http://localhost:3000) to view your workspace.
-
----
-
-## 🧪 Verification & Testing
-
-### Running Tests
-We have implemented a comprehensive mock testing rig inside `/server/test.ts` to verify JWT creation, CRUD security limits, and tenant workspace isolation rules.
-```bash
-npm run test
-```
-
-### Building for Production
-Compiles frontend static assets and bundles the backend server into a single file under `dist/server.cjs`:
-```bash
-npm run build
-```
-
----
-
-## 🐳 Containerized Production Deployments
-
-### Build & Run via Docker
-To package the app as a secure, stateless container binding to port 3000:
-```bash
-docker build -t quantify-ai .
-docker run -p 3000:3000 -e JWT_SECRET="your_secure_secret" quantify-ai
-```
-
-### Run Multi-Container Setup via Docker Compose
-To ensure your JSON ledger databases persist across container restarts, spin up the Docker-Compose volume pipeline:
-```bash
-docker-compose up -d
-```
-All database records will write into a persistent local volume named `quantify_data`.
