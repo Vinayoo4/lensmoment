@@ -1,30 +1,23 @@
 version: '3.8'
 
 services:
-  frontend:
+  quantify-ai:
     build:
       context: .
-      dockerfile: Dockerfile.frontend
-      args:
-        - VITE_API_BASE_URL=http://localhost:3000
-    ports:
-      - "8080:8080"
-    environment:
-      - NODE_ENV=production
-      - PORT=8080
-    depends_on:
-      - backend
-
-  backend:
-    build:
-      context: .
-      dockerfile: Dockerfile.backend
+      dockerfile: Dockerfile
+    container_name: quantify_ai_service
     ports:
       - "3000:3000"
     environment:
       - NODE_ENV=production
       - PORT=3000
-      - JWT_SECRET=change_me_in_production
-      - ALLOWED_ORIGINS=http://localhost:8080
+      - JWT_SECRET=quantify_docker_compose_super_secure_signing_key_9988_xyz
+      - APP_URL=http://localhost:3000
     volumes:
-      - ./data:/app/data # Mount persistent local-first DB
+      # Map the JSON ledger storage file to a persistent host mount to survive container recycles
+      - quantify_data:/app/data.json
+    restart: always
+
+volumes:
+  quantify_data:
+    driver: local
