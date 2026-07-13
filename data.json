@@ -1,5 +1,1049 @@
 {
   "meta": {
-    "seeded": false
-  }
+    "seeded": true
+  },
+  "workspaces": [
+    {
+      "id": "ws-acme-123",
+      "name": "Acme Corp",
+      "subscriptionPlan": "1_year",
+      "subscriptionExpiresAt": "2027-07-15"
+    },
+    {
+      "id": "ws-beta-456",
+      "name": "Beta Logistics",
+      "subscriptionPlan": "free",
+      "subscriptionExpiresAt": "2027-01-15"
+    },
+    {
+      "id": "8940c923-883b-482c-a5c5-654a3f89cb2b",
+      "name": "Test1",
+      "subscriptionPlan": "free",
+      "subscriptionExpiresAt": "2026-08-12"
+    }
+  ],
+  "users": [
+    {
+      "id": "usr-admin",
+      "workspaceId": "ws-acme-123",
+      "name": "admin@acme.com",
+      "role": "Workspace Admin",
+      "password": "4afd96d06a5d02da8c41da3d5ba51b55884b1d4883bc7418943b1ebd7101edde7a0863404fb551ad1c6ef12d21ca8564d7248039a9ed8d69cf8b7952365122d4"
+    },
+    {
+      "id": "usr-finance",
+      "workspaceId": "ws-acme-123",
+      "name": "finance@acme.com",
+      "role": "Financial Manager",
+      "password": "819cb96fab62677f05f03c1cf8adf1fa50a816cf4f12516e700e69e8e1379c85bc5e2ae363c131973697d023a835fcfe264d794b76178676f5a0f911a22bc261"
+    },
+    {
+      "id": "usr-ops",
+      "workspaceId": "ws-acme-123",
+      "name": "ops@acme.com",
+      "role": "Operations Staff",
+      "password": "438a4935ffc00a98dfee7eefb505fa9c4b17e8574cb9ce456c613a53d138e5df4cf4f21587f6e8f909f4d7d2c0d051de3f1ca04552cc50d41574a4a3eaf6de99"
+    },
+    {
+      "id": "usr-client",
+      "workspaceId": "ws-acme-123",
+      "name": "client@acme.com",
+      "role": "Client Portal User",
+      "password": "e3bc6ac04dda6b46d4c7946c2adbadfdb86246dcd484a6f04a00e7f8067ef9e6e09fc487418bd523694cf677a2b3d1fc84cc77b649a607c98c84a42623a163e6"
+    },
+    {
+      "id": "usr-superadmin",
+      "workspaceId": "ws-superadmin-000",
+      "name": "superadmin@quantify.com",
+      "role": "superadmin",
+      "password": "cb8798d1c571c39d50e8dc8b94a945acc31671c950ed253a4dc06236bddb7abbef7c5c42817df81deafa40acee810b7915b926e07c0a8edd3049e1e3c87b5143"
+    }
+  ],
+  "kpiDefinitions": [
+    {
+      "id": "kpi-revenue",
+      "workspaceId": "ws-acme-123",
+      "name": "Monthly Revenue",
+      "unit": "₹",
+      "targetValue": 500000
+    },
+    {
+      "id": "kpi-cac",
+      "workspaceId": "ws-acme-123",
+      "name": "Customer Acquisition Cost",
+      "unit": "₹",
+      "targetValue": 1500
+    },
+    {
+      "id": "kpi-retention",
+      "workspaceId": "ws-acme-123",
+      "name": "Customer Retention Rate",
+      "unit": "%",
+      "targetValue": 90
+    }
+  ],
+  "kpiEntries": [
+    {
+      "id": "entry-rev-2026-06-14",
+      "kpiId": "kpi-revenue",
+      "workspaceId": "ws-acme-123",
+      "date": "2026-06-14",
+      "value": 466727,
+      "isSynced": true
+    },
+    {
+      "id": "entry-cac-2026-06-14",
+      "kpiId": "kpi-cac",
+      "workspaceId": "ws-acme-123",
+      "date": "2026-06-14",
+      "value": 1525,
+      "isSynced": true
+    },
+    {
+      "id": "entry-ret-2026-06-14",
+      "kpiId": "kpi-retention",
+      "workspaceId": "ws-acme-123",
+      "date": "2026-06-14",
+      "value": 88,
+      "isSynced": true
+    },
+    {
+      "id": "entry-rev-2026-06-15",
+      "kpiId": "kpi-revenue",
+      "workspaceId": "ws-acme-123",
+      "date": "2026-06-15",
+      "value": 485418,
+      "isSynced": true
+    },
+    {
+      "id": "entry-cac-2026-06-15",
+      "kpiId": "kpi-cac",
+      "workspaceId": "ws-acme-123",
+      "date": "2026-06-15",
+      "value": 1504,
+      "isSynced": true
+    },
+    {
+      "id": "entry-ret-2026-06-15",
+      "kpiId": "kpi-retention",
+      "workspaceId": "ws-acme-123",
+      "date": "2026-06-15",
+      "value": 87.5,
+      "isSynced": true
+    },
+    {
+      "id": "entry-rev-2026-06-16",
+      "kpiId": "kpi-revenue",
+      "workspaceId": "ws-acme-123",
+      "date": "2026-06-16",
+      "value": 499128,
+      "isSynced": true
+    },
+    {
+      "id": "entry-cac-2026-06-16",
+      "kpiId": "kpi-cac",
+      "workspaceId": "ws-acme-123",
+      "date": "2026-06-16",
+      "value": 1571,
+      "isSynced": true
+    },
+    {
+      "id": "entry-ret-2026-06-16",
+      "kpiId": "kpi-retention",
+      "workspaceId": "ws-acme-123",
+      "date": "2026-06-16",
+      "value": 87,
+      "isSynced": true
+    },
+    {
+      "id": "entry-rev-2026-06-17",
+      "kpiId": "kpi-revenue",
+      "workspaceId": "ws-acme-123",
+      "date": "2026-06-17",
+      "value": 495251,
+      "isSynced": true
+    },
+    {
+      "id": "entry-cac-2026-06-17",
+      "kpiId": "kpi-cac",
+      "workspaceId": "ws-acme-123",
+      "date": "2026-06-17",
+      "value": 1665,
+      "isSynced": true
+    },
+    {
+      "id": "entry-ret-2026-06-17",
+      "kpiId": "kpi-retention",
+      "workspaceId": "ws-acme-123",
+      "date": "2026-06-17",
+      "value": 86.5,
+      "isSynced": true
+    },
+    {
+      "id": "entry-rev-2026-06-18",
+      "kpiId": "kpi-revenue",
+      "workspaceId": "ws-acme-123",
+      "date": "2026-06-18",
+      "value": 477353,
+      "isSynced": true
+    },
+    {
+      "id": "entry-cac-2026-06-18",
+      "kpiId": "kpi-cac",
+      "workspaceId": "ws-acme-123",
+      "date": "2026-06-18",
+      "value": 1699,
+      "isSynced": true
+    },
+    {
+      "id": "entry-ret-2026-06-18",
+      "kpiId": "kpi-retention",
+      "workspaceId": "ws-acme-123",
+      "date": "2026-06-18",
+      "value": 86,
+      "isSynced": true
+    },
+    {
+      "id": "entry-rev-2026-06-19",
+      "kpiId": "kpi-revenue",
+      "workspaceId": "ws-acme-123",
+      "date": "2026-06-19",
+      "value": 461888,
+      "isSynced": true
+    },
+    {
+      "id": "entry-cac-2026-06-19",
+      "kpiId": "kpi-cac",
+      "workspaceId": "ws-acme-123",
+      "date": "2026-06-19",
+      "value": 1642,
+      "isSynced": true
+    },
+    {
+      "id": "entry-ret-2026-06-19",
+      "kpiId": "kpi-retention",
+      "workspaceId": "ws-acme-123",
+      "date": "2026-06-19",
+      "value": 85.5,
+      "isSynced": true
+    },
+    {
+      "id": "entry-rev-2026-06-20",
+      "kpiId": "kpi-revenue",
+      "workspaceId": "ws-acme-123",
+      "date": "2026-06-20",
+      "value": 463076,
+      "isSynced": true
+    },
+    {
+      "id": "entry-cac-2026-06-20",
+      "kpiId": "kpi-cac",
+      "workspaceId": "ws-acme-123",
+      "date": "2026-06-20",
+      "value": 1547,
+      "isSynced": true
+    },
+    {
+      "id": "entry-ret-2026-06-20",
+      "kpiId": "kpi-retention",
+      "workspaceId": "ws-acme-123",
+      "date": "2026-06-20",
+      "value": 85,
+      "isSynced": true
+    },
+    {
+      "id": "entry-rev-2026-06-21",
+      "kpiId": "kpi-revenue",
+      "workspaceId": "ws-acme-123",
+      "date": "2026-06-21",
+      "value": 479823,
+      "isSynced": true
+    },
+    {
+      "id": "entry-cac-2026-06-21",
+      "kpiId": "kpi-cac",
+      "workspaceId": "ws-acme-123",
+      "date": "2026-06-21",
+      "value": 1500,
+      "isSynced": true
+    },
+    {
+      "id": "entry-ret-2026-06-21",
+      "kpiId": "kpi-retention",
+      "workspaceId": "ws-acme-123",
+      "date": "2026-06-21",
+      "value": 84.5,
+      "isSynced": true
+    },
+    {
+      "id": "entry-rev-2026-06-22",
+      "kpiId": "kpi-revenue",
+      "workspaceId": "ws-acme-123",
+      "date": "2026-06-22",
+      "value": 496733,
+      "isSynced": true
+    },
+    {
+      "id": "entry-cac-2026-06-22",
+      "kpiId": "kpi-cac",
+      "workspaceId": "ws-acme-123",
+      "date": "2026-06-22",
+      "value": 1545,
+      "isSynced": true
+    },
+    {
+      "id": "entry-ret-2026-06-22",
+      "kpiId": "kpi-retention",
+      "workspaceId": "ws-acme-123",
+      "date": "2026-06-22",
+      "value": 84,
+      "isSynced": true
+    },
+    {
+      "id": "entry-rev-2026-06-23",
+      "kpiId": "kpi-revenue",
+      "workspaceId": "ws-acme-123",
+      "date": "2026-06-23",
+      "value": 498259,
+      "isSynced": true
+    },
+    {
+      "id": "entry-cac-2026-06-23",
+      "kpiId": "kpi-cac",
+      "workspaceId": "ws-acme-123",
+      "date": "2026-06-23",
+      "value": 1641,
+      "isSynced": true
+    },
+    {
+      "id": "entry-ret-2026-06-23",
+      "kpiId": "kpi-retention",
+      "workspaceId": "ws-acme-123",
+      "date": "2026-06-23",
+      "value": 83.5,
+      "isSynced": true
+    },
+    {
+      "id": "entry-rev-2026-06-24",
+      "kpiId": "kpi-revenue",
+      "workspaceId": "ws-acme-123",
+      "date": "2026-06-24",
+      "value": 482998,
+      "isSynced": true
+    },
+    {
+      "id": "entry-cac-2026-06-24",
+      "kpiId": "kpi-cac",
+      "workspaceId": "ws-acme-123",
+      "date": "2026-06-24",
+      "value": 1699,
+      "isSynced": true
+    },
+    {
+      "id": "entry-ret-2026-06-24",
+      "kpiId": "kpi-retention",
+      "workspaceId": "ws-acme-123",
+      "date": "2026-06-24",
+      "value": 83,
+      "isSynced": true
+    },
+    {
+      "id": "entry-rev-2026-06-25",
+      "kpiId": "kpi-revenue",
+      "workspaceId": "ws-acme-123",
+      "date": "2026-06-25",
+      "value": 464980,
+      "isSynced": true
+    },
+    {
+      "id": "entry-cac-2026-06-25",
+      "kpiId": "kpi-cac",
+      "workspaceId": "ws-acme-123",
+      "date": "2026-06-25",
+      "value": 1666,
+      "isSynced": true
+    },
+    {
+      "id": "entry-ret-2026-06-25",
+      "kpiId": "kpi-retention",
+      "workspaceId": "ws-acme-123",
+      "date": "2026-06-25",
+      "value": 82.5,
+      "isSynced": true
+    },
+    {
+      "id": "entry-rev-2026-06-26",
+      "kpiId": "kpi-revenue",
+      "workspaceId": "ws-acme-123",
+      "date": "2026-06-26",
+      "value": 460772,
+      "isSynced": true
+    },
+    {
+      "id": "entry-cac-2026-06-26",
+      "kpiId": "kpi-cac",
+      "workspaceId": "ws-acme-123",
+      "date": "2026-06-26",
+      "value": 1572,
+      "isSynced": true
+    },
+    {
+      "id": "entry-ret-2026-06-26",
+      "kpiId": "kpi-retention",
+      "workspaceId": "ws-acme-123",
+      "date": "2026-06-26",
+      "value": 82,
+      "isSynced": true
+    },
+    {
+      "id": "entry-rev-2026-06-27",
+      "kpiId": "kpi-revenue",
+      "workspaceId": "ws-acme-123",
+      "date": "2026-06-27",
+      "value": 474242,
+      "isSynced": true
+    },
+    {
+      "id": "entry-cac-2026-06-27",
+      "kpiId": "kpi-cac",
+      "workspaceId": "ws-acme-123",
+      "date": "2026-06-27",
+      "value": 1504,
+      "isSynced": true
+    },
+    {
+      "id": "entry-ret-2026-06-27",
+      "kpiId": "kpi-retention",
+      "workspaceId": "ws-acme-123",
+      "date": "2026-06-27",
+      "value": 81.5,
+      "isSynced": true
+    },
+    {
+      "id": "entry-rev-2026-06-28",
+      "kpiId": "kpi-revenue",
+      "workspaceId": "ws-acme-123",
+      "date": "2026-06-28",
+      "value": 493006,
+      "isSynced": true
+    },
+    {
+      "id": "entry-cac-2026-06-28",
+      "kpiId": "kpi-cac",
+      "workspaceId": "ws-acme-123",
+      "date": "2026-06-28",
+      "value": 1524,
+      "isSynced": true
+    },
+    {
+      "id": "entry-ret-2026-06-28",
+      "kpiId": "kpi-retention",
+      "workspaceId": "ws-acme-123",
+      "date": "2026-06-28",
+      "value": 81,
+      "isSynced": true
+    },
+    {
+      "id": "entry-rev-2026-06-29",
+      "kpiId": "kpi-revenue",
+      "workspaceId": "ws-acme-123",
+      "date": "2026-06-29",
+      "value": 499812,
+      "isSynced": true
+    },
+    {
+      "id": "entry-cac-2026-06-29",
+      "kpiId": "kpi-cac",
+      "workspaceId": "ws-acme-123",
+      "date": "2026-06-29",
+      "value": 1614,
+      "isSynced": true
+    },
+    {
+      "id": "entry-ret-2026-06-29",
+      "kpiId": "kpi-retention",
+      "workspaceId": "ws-acme-123",
+      "date": "2026-06-29",
+      "value": 80.5,
+      "isSynced": true
+    },
+    {
+      "id": "entry-rev-2026-06-30",
+      "kpiId": "kpi-revenue",
+      "workspaceId": "ws-acme-123",
+      "date": "2026-06-30",
+      "value": 488403,
+      "isSynced": true
+    },
+    {
+      "id": "entry-cac-2026-06-30",
+      "kpiId": "kpi-cac",
+      "workspaceId": "ws-acme-123",
+      "date": "2026-06-30",
+      "value": 1691,
+      "isSynced": true
+    },
+    {
+      "id": "entry-ret-2026-06-30",
+      "kpiId": "kpi-retention",
+      "workspaceId": "ws-acme-123",
+      "date": "2026-06-30",
+      "value": 80,
+      "isSynced": true
+    },
+    {
+      "id": "entry-rev-2026-07-01",
+      "kpiId": "kpi-revenue",
+      "workspaceId": "ws-acme-123",
+      "date": "2026-07-01",
+      "value": 469269,
+      "isSynced": true
+    },
+    {
+      "id": "entry-cac-2026-07-01",
+      "kpiId": "kpi-cac",
+      "workspaceId": "ws-acme-123",
+      "date": "2026-07-01",
+      "value": 1684,
+      "isSynced": true
+    },
+    {
+      "id": "entry-ret-2026-07-01",
+      "kpiId": "kpi-retention",
+      "workspaceId": "ws-acme-123",
+      "date": "2026-07-01",
+      "value": 79.5,
+      "isSynced": true
+    },
+    {
+      "id": "entry-rev-2026-07-02",
+      "kpiId": "kpi-revenue",
+      "workspaceId": "ws-acme-123",
+      "date": "2026-07-02",
+      "value": 460000,
+      "isSynced": true
+    },
+    {
+      "id": "entry-cac-2026-07-02",
+      "kpiId": "kpi-cac",
+      "workspaceId": "ws-acme-123",
+      "date": "2026-07-02",
+      "value": 1600,
+      "isSynced": true
+    },
+    {
+      "id": "entry-ret-2026-07-02",
+      "kpiId": "kpi-retention",
+      "workspaceId": "ws-acme-123",
+      "date": "2026-07-02",
+      "value": 79,
+      "isSynced": true
+    },
+    {
+      "id": "entry-rev-2026-07-03",
+      "kpiId": "kpi-revenue",
+      "workspaceId": "ws-acme-123",
+      "date": "2026-07-03",
+      "value": 469120,
+      "isSynced": true
+    },
+    {
+      "id": "entry-cac-2026-07-03",
+      "kpiId": "kpi-cac",
+      "workspaceId": "ws-acme-123",
+      "date": "2026-07-03",
+      "value": 1516,
+      "isSynced": true
+    },
+    {
+      "id": "entry-ret-2026-07-03",
+      "kpiId": "kpi-retention",
+      "workspaceId": "ws-acme-123",
+      "date": "2026-07-03",
+      "value": 78.5,
+      "isSynced": true
+    },
+    {
+      "id": "entry-rev-2026-07-04",
+      "kpiId": "kpi-revenue",
+      "workspaceId": "ws-acme-123",
+      "date": "2026-07-04",
+      "value": 488242,
+      "isSynced": true
+    },
+    {
+      "id": "entry-cac-2026-07-04",
+      "kpiId": "kpi-cac",
+      "workspaceId": "ws-acme-123",
+      "date": "2026-07-04",
+      "value": 1509,
+      "isSynced": true
+    },
+    {
+      "id": "entry-ret-2026-07-04",
+      "kpiId": "kpi-retention",
+      "workspaceId": "ws-acme-123",
+      "date": "2026-07-04",
+      "value": 78,
+      "isSynced": true
+    },
+    {
+      "id": "entry-rev-2026-07-05",
+      "kpiId": "kpi-revenue",
+      "workspaceId": "ws-acme-123",
+      "date": "2026-07-05",
+      "value": 499787,
+      "isSynced": true
+    },
+    {
+      "id": "entry-cac-2026-07-05",
+      "kpiId": "kpi-cac",
+      "workspaceId": "ws-acme-123",
+      "date": "2026-07-05",
+      "value": 1585,
+      "isSynced": true
+    },
+    {
+      "id": "entry-ret-2026-07-05",
+      "kpiId": "kpi-retention",
+      "workspaceId": "ws-acme-123",
+      "date": "2026-07-05",
+      "value": 77.5,
+      "isSynced": true
+    },
+    {
+      "id": "entry-rev-2026-07-06",
+      "kpiId": "kpi-revenue",
+      "workspaceId": "ws-acme-123",
+      "date": "2026-07-06",
+      "value": 493140,
+      "isSynced": true
+    },
+    {
+      "id": "entry-cac-2026-07-06",
+      "kpiId": "kpi-cac",
+      "workspaceId": "ws-acme-123",
+      "date": "2026-07-06",
+      "value": 1675,
+      "isSynced": true
+    },
+    {
+      "id": "entry-ret-2026-07-06",
+      "kpiId": "kpi-retention",
+      "workspaceId": "ws-acme-123",
+      "date": "2026-07-06",
+      "value": 77,
+      "isSynced": true
+    },
+    {
+      "id": "entry-rev-2026-07-07",
+      "kpiId": "kpi-revenue",
+      "workspaceId": "ws-acme-123",
+      "date": "2026-07-07",
+      "value": 474412,
+      "isSynced": true
+    },
+    {
+      "id": "entry-cac-2026-07-07",
+      "kpiId": "kpi-cac",
+      "workspaceId": "ws-acme-123",
+      "date": "2026-07-07",
+      "value": 1696,
+      "isSynced": true
+    },
+    {
+      "id": "entry-ret-2026-07-07",
+      "kpiId": "kpi-retention",
+      "workspaceId": "ws-acme-123",
+      "date": "2026-07-07",
+      "value": 76.5,
+      "isSynced": true
+    },
+    {
+      "id": "entry-rev-2026-07-08",
+      "kpiId": "kpi-revenue",
+      "workspaceId": "ws-acme-123",
+      "date": "2026-07-08",
+      "value": 460822,
+      "isSynced": true
+    },
+    {
+      "id": "entry-cac-2026-07-08",
+      "kpiId": "kpi-cac",
+      "workspaceId": "ws-acme-123",
+      "date": "2026-07-08",
+      "value": 1628,
+      "isSynced": true
+    },
+    {
+      "id": "entry-ret-2026-07-08",
+      "kpiId": "kpi-retention",
+      "workspaceId": "ws-acme-123",
+      "date": "2026-07-08",
+      "value": 76,
+      "isSynced": true
+    },
+    {
+      "id": "entry-rev-2026-07-09",
+      "kpiId": "kpi-revenue",
+      "workspaceId": "ws-acme-123",
+      "date": "2026-07-09",
+      "value": 464864,
+      "isSynced": true
+    },
+    {
+      "id": "entry-cac-2026-07-09",
+      "kpiId": "kpi-cac",
+      "workspaceId": "ws-acme-123",
+      "date": "2026-07-09",
+      "value": 1535,
+      "isSynced": true
+    },
+    {
+      "id": "entry-ret-2026-07-09",
+      "kpiId": "kpi-retention",
+      "workspaceId": "ws-acme-123",
+      "date": "2026-07-09",
+      "value": 75.5,
+      "isSynced": true
+    },
+    {
+      "id": "entry-rev-2026-07-10",
+      "kpiId": "kpi-revenue",
+      "workspaceId": "ws-acme-123",
+      "date": "2026-07-10",
+      "value": 450000,
+      "isSynced": true
+    },
+    {
+      "id": "entry-cac-2026-07-10",
+      "kpiId": "kpi-cac",
+      "workspaceId": "ws-acme-123",
+      "date": "2026-07-10",
+      "value": 1501,
+      "isSynced": true
+    },
+    {
+      "id": "entry-ret-2026-07-10",
+      "kpiId": "kpi-retention",
+      "workspaceId": "ws-acme-123",
+      "date": "2026-07-10",
+      "value": 75,
+      "isSynced": true
+    },
+    {
+      "id": "entry-rev-2026-07-11",
+      "kpiId": "kpi-revenue",
+      "workspaceId": "ws-acme-123",
+      "date": "2026-07-11",
+      "value": 430000,
+      "isSynced": true
+    },
+    {
+      "id": "entry-cac-2026-07-11",
+      "kpiId": "kpi-cac",
+      "workspaceId": "ws-acme-123",
+      "date": "2026-07-11",
+      "value": 1558,
+      "isSynced": true
+    },
+    {
+      "id": "entry-ret-2026-07-11",
+      "kpiId": "kpi-retention",
+      "workspaceId": "ws-acme-123",
+      "date": "2026-07-11",
+      "value": 34,
+      "isSynced": true
+    },
+    {
+      "id": "entry-rev-2026-07-12",
+      "kpiId": "kpi-revenue",
+      "workspaceId": "ws-acme-123",
+      "date": "2026-07-12",
+      "value": 410000,
+      "isSynced": true
+    },
+    {
+      "id": "entry-cac-2026-07-12",
+      "kpiId": "kpi-cac",
+      "workspaceId": "ws-acme-123",
+      "date": "2026-07-12",
+      "value": 1654,
+      "isSynced": true
+    },
+    {
+      "id": "entry-ret-2026-07-12",
+      "kpiId": "kpi-retention",
+      "workspaceId": "ws-acme-123",
+      "date": "2026-07-12",
+      "value": 36,
+      "isSynced": true
+    },
+    {
+      "id": "entry-rev-2026-07-13",
+      "kpiId": "kpi-revenue",
+      "workspaceId": "ws-acme-123",
+      "date": "2026-07-13",
+      "value": 390000,
+      "isSynced": true
+    },
+    {
+      "id": "entry-cac-2026-07-13",
+      "kpiId": "kpi-cac",
+      "workspaceId": "ws-acme-123",
+      "date": "2026-07-13",
+      "value": 1700,
+      "isSynced": true
+    },
+    {
+      "id": "entry-ret-2026-07-13",
+      "kpiId": "kpi-retention",
+      "workspaceId": "ws-acme-123",
+      "date": "2026-07-13",
+      "value": 38,
+      "isSynced": true
+    }
+  ],
+  "transactions": [
+    {
+      "id": "tx-1",
+      "workspaceId": "ws-acme-123",
+      "date": "2026-07-01",
+      "amount": 45000,
+      "description": "Client Retainer - Sunrise Tech",
+      "status": "reconciled"
+    },
+    {
+      "id": "tx-2",
+      "workspaceId": "ws-acme-123",
+      "date": "2026-07-02",
+      "amount": -2500,
+      "description": "Office Internet Subscription",
+      "status": "reconciled"
+    },
+    {
+      "id": "tx-3",
+      "workspaceId": "ws-acme-123",
+      "date": "2026-07-03",
+      "amount": -15000,
+      "description": "Desk chair purchases",
+      "status": "unreconciled"
+    },
+    {
+      "id": "tx-4",
+      "workspaceId": "ws-acme-123",
+      "date": "2026-07-04",
+      "amount": 80000,
+      "description": "Software consulting project milestone",
+      "status": "reconciled"
+    },
+    {
+      "id": "tx-5",
+      "workspaceId": "ws-acme-123",
+      "date": "2026-07-05",
+      "amount": -3200,
+      "description": "Team lunch expense",
+      "status": "unreconciled"
+    },
+    {
+      "id": "tx-6",
+      "workspaceId": "ws-acme-123",
+      "date": "2026-07-06",
+      "amount": -5000,
+      "description": "Social Media Advertising campaign",
+      "status": "unreconciled"
+    },
+    {
+      "id": "tx-7",
+      "workspaceId": "ws-acme-123",
+      "date": "2026-07-07",
+      "amount": 120000,
+      "description": "B2B Enterprise License - Nexus Group",
+      "status": "reconciled"
+    },
+    {
+      "id": "tx-8",
+      "workspaceId": "ws-acme-123",
+      "date": "2026-07-08",
+      "amount": -1200,
+      "description": "Premium font licenses for branding",
+      "status": "unreconciled"
+    },
+    {
+      "id": "tx-9",
+      "workspaceId": "ws-acme-123",
+      "date": "2026-07-09",
+      "amount": -4000,
+      "description": "Domain name renewal & VPS hosting",
+      "status": "unreconciled"
+    },
+    {
+      "id": "tx-10",
+      "workspaceId": "ws-acme-123",
+      "date": "2026-07-10",
+      "amount": -18000,
+      "description": "Freelancer UI design contract",
+      "status": "unreconciled"
+    },
+    {
+      "id": "tx-11",
+      "workspaceId": "ws-acme-123",
+      "date": "2026-06-25",
+      "amount": 50000,
+      "description": "Consulting invoice - Delta Co",
+      "status": "reconciled"
+    },
+    {
+      "id": "tx-12",
+      "workspaceId": "ws-acme-123",
+      "date": "2026-06-26",
+      "amount": -8500,
+      "description": "Electricity and utility bills",
+      "status": "reconciled"
+    },
+    {
+      "id": "tx-13",
+      "workspaceId": "ws-acme-123",
+      "date": "2026-06-27",
+      "amount": -12000,
+      "description": "Corporate taxation advisory fee",
+      "status": "reconciled"
+    },
+    {
+      "id": "tx-14",
+      "workspaceId": "ws-acme-123",
+      "date": "2026-06-28",
+      "amount": 150000,
+      "description": "API licensing setup fee",
+      "status": "reconciled"
+    },
+    {
+      "id": "tx-15",
+      "workspaceId": "ws-acme-123",
+      "date": "2026-06-29",
+      "amount": -3500,
+      "description": "SaaS subscription - Email Marketing",
+      "status": "reconciled"
+    },
+    {
+      "id": "tx-16",
+      "workspaceId": "ws-acme-123",
+      "date": "2026-06-30",
+      "amount": -45000,
+      "description": "Office Space Monthly Rental",
+      "status": "reconciled"
+    },
+    {
+      "id": "tx-17",
+      "workspaceId": "ws-acme-123",
+      "date": "2026-06-15",
+      "amount": 95000,
+      "description": "Enterprise License installment",
+      "status": "reconciled"
+    },
+    {
+      "id": "tx-18",
+      "workspaceId": "ws-acme-123",
+      "date": "2026-06-18",
+      "amount": -2400,
+      "description": "Courier & logistics delivery charges",
+      "status": "reconciled"
+    },
+    {
+      "id": "tx-19",
+      "workspaceId": "ws-acme-123",
+      "date": "2026-06-20",
+      "amount": -10000,
+      "description": "Hardware repair & system upgrade",
+      "status": "reconciled"
+    },
+    {
+      "id": "tx-20",
+      "workspaceId": "ws-acme-123",
+      "date": "2026-06-22",
+      "amount": 60000,
+      "description": "Implementation support - Apex Systems",
+      "status": "reconciled"
+    }
+  ],
+  "reconciliationStates": [
+    {
+      "id": "rec-1",
+      "workspaceId": "ws-acme-123",
+      "month": "2026-06",
+      "discrepanciesCount": 0,
+      "isDraft": false
+    },
+    {
+      "id": "rec-2",
+      "workspaceId": "ws-acme-123",
+      "month": "2026-07",
+      "discrepanciesCount": 6,
+      "isDraft": true
+    }
+  ],
+  "aiSuggestions": [
+    {
+      "id": "sug-1",
+      "workspaceId": "ws-acme-123",
+      "type": "revenue_decline",
+      "trigger": "Revenue falling for 3+ consecutive entries",
+      "text": "Monthly Revenue is showing a clear downward trend over the past 4 entries. We suggest reviewing active sales cycles and considering offering short-term discounts or promotional packaging to bolster top-line growth.",
+      "status": "todo"
+    },
+    {
+      "id": "sug-2",
+      "workspaceId": "ws-acme-123",
+      "type": "retention_drop",
+      "trigger": "Retention below 40%",
+      "text": "Alert: Customer Retention Rate has crashed to 34%, which is significantly below your 90% target and critical limit of 40%. Reach out to recent churned customers or trigger high-priority feedback loops to fix onboarding friction.",
+      "status": "todo"
+    },
+    {
+      "id": "sug-3",
+      "workspaceId": "ws-acme-123",
+      "type": "unreconciled_tx",
+      "trigger": "More than 5 unreconciled transactions / total exceeds 10,000",
+      "text": "Action required: You currently have 6 unreconciled transactions totaling ₹46,400. Keeping transactions reconciled ensures real-time accuracy in cash flow forecasts. Please head to the Reconciliation Workspace.",
+      "status": "todo"
+    }
+  ],
+  "reports": [],
+  "auditLogs": [
+    {
+      "id": "log-1",
+      "timestamp": "2026-07-13T06:32:07.458Z",
+      "userId": "usr-admin",
+      "action": "USER_LOGIN",
+      "details": "Administrator logged in from IP 192.168.1.45"
+    },
+    {
+      "id": "log-2",
+      "timestamp": "2026-07-13T07:32:07.458Z",
+      "userId": "usr-ops",
+      "action": "KPI_ENTRY_CREATE",
+      "details": "Entered value 34.2% for Customer Retention Rate on date 2026-07-10"
+    },
+    {
+      "id": "f9f85d28-e588-4aa9-adc6-96a1888c7006",
+      "timestamp": "2026-07-13T08:32:44.178Z",
+      "userId": "usr-superadmin",
+      "action": "USER_LOGIN",
+      "details": "Logged in from IP 127.0.0.1"
+    },
+    {
+      "id": "ecb8e69e-7957-4386-a2f8-73b1acf5f8e1",
+      "timestamp": "2026-07-13T08:33:25.316Z",
+      "userId": "usr-superadmin",
+      "action": "WORKSPACE_CREATE",
+      "details": "Superadmin created new tenant workspace \"Test1\""
+    },
+    {
+      "id": "c3747b53-b278-4961-a3da-ccac56674b20",
+      "timestamp": "2026-07-13T08:33:45.705Z",
+      "userId": "usr-superadmin",
+      "action": "WORKSPACE_SUBSCRIPTION_UPDATE",
+      "details": "Superadmin updated workspace \"Beta Logistics\" subscription to: free (Expires: 2027-01-15)"
+    }
+  ]
 }
