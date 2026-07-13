@@ -1,0 +1,6 @@
+{
+  "name": "Quantify AI",
+  "description": "Quantify AI is a full-stack business intelligence and lightweight accounting platform for small businesses, providing KPI tracking, transaction reconciliation, custom reporting, and AI-driven insights.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
