@@ -1,13 +1,7 @@
 import { isAppwriteEnabled, databases, APPWRITE_DB_ID, COLLECTIONS } from './appwrite';
 import { setupAppwriteSchema } from './appwrite-setup';
-import { seedDatabase as localSeedDatabase } from './db';
+import { seedDatabase as localSeedDatabase, hashPassword } from './db';
 import { appwriteDb } from './appwrite-db';
-import crypto from 'crypto';
-
-// Password hash logic exactly as in local db
-function hashPassword(password: string): string {
-  return crypto.pbkdf2Sync(password, 'quantify_static_salt_9988', 1000, 64, 'sha512').toString('hex');
-}
 
 export async function dynamicSeedDatabase(): Promise<void> {
   if (isAppwriteEnabled) {

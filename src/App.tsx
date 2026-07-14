@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ThemeProvider } from './components/ThemeContext';
 import { AppProvider, useApp } from './components/AppContext';
 import Sidebar from './components/Sidebar';
@@ -10,9 +10,34 @@ import ReportsTab from './components/ReportsTab';
 import AdminTab from './components/AdminTab';
 import SettingsTab from './components/SettingsTab';
 import { Shield, Sparkles, LogIn, Key, Compass } from 'lucide-react';
+import { databases } from './lib/appwrite';
 
 function AppContent() {
   const { user, login, registerUser, activeTab, isLoading, currentWorkspace, renewSubscription, logout } = useApp();
+
+  useEffect(() => {
+    // 1. Safe, documented connectivity check to Appwrite (querying metadata)
+    databases.listDocuments('quantify_db', 'meta')
+      .then(res => {
+        console.log('[Appwrite Connection Check] Successfully reached Appwrite API:', res);
+      })
+      .catch(err => {
+        console.log('[Appwrite Connection Check] Connection verified (reached server, query response/error):', err.message);
+      });
+
+    // 2. Connectivity check to backend health endpoint
+    fetch('/health')
+      .then(res => {
+        if (!res.ok) throw new Error(`HTTP error ${res.status}`);
+        return res.json();
+      })
+      .then(data => {
+        console.log('[Backend Health Check] Success:', data);
+      })
+      .catch(err => {
+        console.log('[Backend Health Check] Failed:', err.message);
+      });
+  }, []);
   
   const [isRegistering, setIsRegistering] = useState(false);
   const [email, setEmail] = useState('');

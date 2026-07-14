@@ -355,7 +355,8 @@ export const db = {
 // Database seeding function
 export async function seedDatabase(): Promise<void> {
   const data = await readDB();
-  if (data.meta && data.meta.seeded) {
+  const hasDemoAdmin = data.users && data.users.some(u => u.name === 'admin@acme.com');
+  if (data.meta && data.meta.seeded && hasDemoAdmin) {
     console.log('Database already seeded.');
     return;
   }
