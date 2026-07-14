@@ -18,10 +18,10 @@ jobs:
           node-version: 22
 
       - name: Install dependencies
-        run: npm run install:all
+        run: npm install
 
       - name: Build All
-        run: npm run build:all
+        run: npm run build
 
       - name: Run Backend Tests
         run: npm run test:backend
@@ -29,25 +29,17 @@ jobs:
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
 
-      - name: Start Backend and Frontend for E2E
+      - name: Start Dev Server for E2E
         run: |
-          # Start Backend in background
-          cd backend
-          npm run start &
-          # Wait for backend to be ready
-          npx wait-on http://localhost:3000/health
-          cd ..
-
-          # Start Frontend in background
-          cd frontend
-          npx serve -s dist -p 4173 &
-          npx wait-on http://localhost:4173
-          cd ..
+          npm run dev &
+          npx wait-on http://localhost:3000
 
       - name: Run Playwright Tests
         run: npm run test:e2e
         env:
-          VITE_API_BASE_URL: http://localhost:3000
+          VITE_API_BASE_URL: /api
+          JWT_SECRET: ci_test_secret_key_9988_xyz
+          NODE_ENV: test
 
       - name: Upload Playwright Report
         if: always()

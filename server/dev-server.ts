@@ -1,29 +1,20 @@
 import express from 'express';
 import path from 'path';
 import { createServer as createViteServer } from 'vite';
-import { seedDatabase } from './server/db';
-import apiRouter from './server/routes';
+import apiApp from '../api/index';
 
 async function startServer() {
+  const PORT = process.env.PORT || 3000;
+
+  // Use the exact same app setup from api/index.ts for local dev
   const app = express();
-  const PORT = 3000;
 
-  // Parse JSON payloads
-  app.use(express.json());
-
-  // Mount API Router before Vite middleware
-  app.use(apiRouter);
-
-  // Seed the JSON Database (creates files and demo values if not seeded)
-  try {
-    await seedDatabase();
-  } catch (err) {
-    console.error('Failed to seed database:', err);
-  }
+  // Delegate all /api requests to the serverless app handler
+  app.use(apiApp);
 
   // Configure Vite Development middleware or static production asset serving
   if (process.env.NODE_ENV !== 'production') {
-    console.log('Starting Express server in development mode with Vite middleware...');
+    console.log('Starting local dev server with Vite middleware...');
     const vite = await createViteServer({
       server: { middlewareMode: true },
       appType: 'spa',
@@ -39,8 +30,8 @@ async function startServer() {
     });
   }
 
-  app.listen(PORT, '0.0.0.0', () => {
-    console.log(`Quantify AI Full-Stack Server running on port ${PORT}`);
+  app.listen(PORT, () => {
+    console.log(`Quantify AI Dev Server running on port ${PORT}`);
   });
 }
 
