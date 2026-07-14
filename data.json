@@ -56,7 +56,7 @@
       "workspaceId": "ws-acme-123",
       "name": "Monthly Revenue",
       "unit": "₹",
-      "targetValue": 500000
+      "targetValue": 50000
     },
     {
       "id": "kpi-cac",
@@ -997,6 +997,46 @@
       "trigger": "More than 5 unreconciled transactions / total exceeds 10,000",
       "text": "Action required: You currently have 6 unreconciled transactions totaling ₹46,400. Keeping transactions reconciled ensures real-time accuracy in cash flow forecasts. Please head to the Reconciliation Workspace.",
       "status": "todo"
+    },
+    {
+      "workspaceId": "ws-acme-123",
+      "type": "decline_kpi-revenue",
+      "trigger": "KPI Monthly Revenue trends downward for 3+ consecutive entries",
+      "text": "Your KPI \"Monthly Revenue\" has shown a continuous downward trend over the past 4 entries (currently 390000 ₹). We suggest conducting a quick team sync to diagnose any friction or blockers.",
+      "status": "todo",
+      "id": "3b91fb7e-92bc-4812-9243-1b870f896ff8"
+    },
+    {
+      "workspaceId": "ws-acme-123",
+      "type": "below_target_kpi-retention",
+      "trigger": "KPI Customer Retention Rate is 58% below target",
+      "text": "Alert: \"Customer Retention Rate\" has registered a value of 38 %, which is 58% below your target of 90 %. Consider revising marketing push or adjusting operations to make up the deficit.",
+      "status": "todo",
+      "id": "61be2c1f-955f-4667-b8ed-750898542a8e"
+    },
+    {
+      "workspaceId": "ws-acme-123",
+      "type": "retention_critical_kpi-retention",
+      "trigger": "Customer retention falls below 40%",
+      "text": "Critical Alert: Customer Retention Rate has dropped to 38% (below the 40% threshold). Retention below 40% strongly impacts long-term recurring revenue. Prioritize outreach to recently disengaged clients.",
+      "status": "todo",
+      "id": "42874676-db5d-42fe-964a-201f7184df00"
+    },
+    {
+      "workspaceId": "ws-acme-123",
+      "type": "unreconciled_count_warning",
+      "trigger": "Unreconciled count (6) exceeds 5",
+      "text": "You have 6 transactions pending ledger reconciliation. We suggest completing a reconciliation run to keep cash flow statements accurate.",
+      "status": "todo",
+      "id": "0c59ca1c-ac45-45a5-8723-de83d3dc0ace"
+    },
+    {
+      "workspaceId": "ws-acme-123",
+      "type": "unreconciled_value_warning",
+      "trigger": "Unreconciled total exceeds ₹10,000",
+      "text": "Alert: Unreconciled transaction volume has reached ₹46,400, crossing the threshold of ₹10,000. Keep your books compliant by reconciling these balances in the reconciliation tab.",
+      "status": "todo",
+      "id": "3663304c-a8d4-4118-b7d6-63598a75b449"
     }
   ],
   "reports": [],
@@ -1049,6 +1089,48 @@
       "userId": "usr-superadmin",
       "action": "USER_LOGIN",
       "details": "Logged in from IP ::1"
+    },
+    {
+      "id": "105bf2b2-f52c-4659-a55f-d16de6129385",
+      "timestamp": "2026-07-14T10:08:20.687Z",
+      "userId": "usr-superadmin",
+      "action": "USER_LOGIN",
+      "details": "Logged in from IP ::1"
+    },
+    {
+      "id": "4dcad626-aaf6-4d77-8f24-1552654ccf2a",
+      "timestamp": "2026-07-14T10:09:10.383Z",
+      "userId": "usr-admin",
+      "action": "USER_LOGIN",
+      "details": "Logged in from IP ::1"
+    },
+    {
+      "id": "a950f7cb-e49f-475d-ace0-75b5ded7e2bf",
+      "timestamp": "2026-07-14T10:10:02.102Z",
+      "userId": "usr-finance",
+      "action": "USER_LOGIN",
+      "details": "Logged in from IP ::1"
+    },
+    {
+      "id": "6852be67-ffb9-4094-9066-3392e21f763e",
+      "timestamp": "2026-07-14T10:10:29.048Z",
+      "userId": "usr-finance",
+      "action": "KPI_UPDATE",
+      "details": "Updated KPI definition \"Monthly Revenue\""
+    },
+    {
+      "id": "722632a1-4ab5-409d-ac1b-d2e5c4e647ca",
+      "timestamp": "2026-07-14T10:10:37.299Z",
+      "userId": "usr-finance",
+      "action": "KPI_UPDATE",
+      "details": "Updated KPI definition \"Monthly Revenue\""
+    },
+    {
+      "id": "7fc0e874-f260-45cf-956b-503e79b08321",
+      "timestamp": "2026-07-14T10:10:45.625Z",
+      "userId": "usr-finance",
+      "action": "KPI_UPDATE",
+      "details": "Updated KPI definition \"Monthly Revenue\""
     }
   ],
   "meta": {
