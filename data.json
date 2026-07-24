@@ -71,6 +71,13 @@
       "name": "Customer Retention Rate",
       "unit": "%",
       "targetValue": 90
+    },
+    {
+      "workspaceId": "ws-acme-123",
+      "name": "GROSŞPRODUCT",
+      "unit": "₹10",
+      "targetValue": 5000000,
+      "id": "8278a31c-41f5-4522-8839-c7f103c1ab81"
     }
   ],
   "kpiEntries": [
@@ -869,14 +876,6 @@
       "status": "unreconciled"
     },
     {
-      "id": "tx-10",
-      "workspaceId": "ws-acme-123",
-      "date": "2026-07-10",
-      "amount": -18000,
-      "description": "Freelancer UI design contract",
-      "status": "unreconciled"
-    },
-    {
       "id": "tx-11",
       "workspaceId": "ws-acme-123",
       "date": "2026-06-25",
@@ -1131,6 +1130,69 @@
       "userId": "usr-finance",
       "action": "KPI_UPDATE",
       "details": "Updated KPI definition \"Monthly Revenue\""
+    },
+    {
+      "id": "00f14da8-cad4-425e-a3d9-a33a1abed1ab",
+      "timestamp": "2026-07-19T06:45:05.187Z",
+      "userId": "usr-admin",
+      "action": "USER_LOGIN",
+      "details": "Logged in from IP ::1"
+    },
+    {
+      "id": "c9642cb1-ae6f-466b-a0da-05f6d87371c7",
+      "timestamp": "2026-07-19T06:53:40.727Z",
+      "userId": "usr-superadmin",
+      "action": "USER_LOGIN",
+      "details": "Logged in from IP ::1"
+    },
+    {
+      "id": "b21667db-828b-4666-bc2a-5de647a1603f",
+      "timestamp": "2026-07-19T08:35:00.714Z",
+      "userId": "usr-admin",
+      "action": "USER_LOGIN",
+      "details": "Logged in from IP ::1"
+    },
+    {
+      "id": "abb70b1e-8436-4bc4-a7fd-4b8b49639f17",
+      "timestamp": "2026-07-19T08:36:17.503Z",
+      "userId": "usr-admin",
+      "action": "KPI_CREATE",
+      "details": "Created KPI Definition \"GROSŞPRODUCT\" (₹10)"
+    },
+    {
+      "id": "d207c95d-5703-4a7a-a03e-aaef358051b4",
+      "timestamp": "2026-07-19T08:37:29.606Z",
+      "userId": "usr-admin",
+      "action": "TRANSACTION_DELETE",
+      "details": "Deleted transaction: Freelancer UI design contract"
+    },
+    {
+      "id": "9226fb1e-7f65-4c93-be7d-c2885db9e96b",
+      "timestamp": "2026-07-19T08:38:33.923Z",
+      "userId": "usr-finance",
+      "action": "USER_LOGIN",
+      "details": "Logged in from IP ::1"
+    },
+    {
+      "id": "df091d55-45ed-4703-9afa-a1a23e229c21",
+      "timestamp": "2026-07-19T08:39:23.004Z",
+      "userId": "usr-ops",
+      "action": "USER_LOGIN",
+      "details": "Logged in from IP ::1"
+    },
+    {
+      "id": "6e6065b3-e752-407d-8b5a-120e623a4abf",
+      "timestamp": "2026-07-19T08:39:34.731Z",
+      "userId": "usr-client",
+      "action": "USER_LOGIN",
+      "details": "Logged in from IP ::1"
+    },
+    {
+      "id": "0b84c113-a065-4571-8624-40db7819840c",
+      "timestamp": "2026-07-19T08:39:46.007Z",
+      "userId": "usr-superadmin",
+      "action": "USER_LOGIN",
+      "details": "Logged in from IP ::1"
     }
   ],
   "meta": {
